@@ -18,7 +18,7 @@ export default function Home() {
     />
     </Link>
 
-      <h2  className="text-3xl md:text-6xl font-extrabold text-gray-800 text-center mb-8">Welcome To <br/> Rolling Grazing Limited</h2>
+      <h2  className="text-3xl md:text-6xl font-extrabold text-gray-800 text-center mb-8">Welcome To <br/> Rolling Grazing Bonded Terminal Limited</h2>
       {/* Icon Animation */}
       <motion.div
         initial={{ rotate: 0 }}
