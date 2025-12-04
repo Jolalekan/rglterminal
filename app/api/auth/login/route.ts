@@ -59,7 +59,7 @@ const response = NextResponse.json(
 
 // set the auth cookie on the response
 response.cookies.set({
-  name: "accessToken",
+  name: "auth-token",
   value: accessToken,
   httpOnly: true,
   path: "/",
@@ -76,7 +76,7 @@ return response;
   export async function GET(req: Request) {
     try {
       // ✅ Verify JWT Token
-      const { admin:tokenPayload, error } = await verifyToken(req);
+      const { admin:tokenPayload, error } = await verifyToken();
   
       if (error) {
         return NextResponse.json({ error: "Invalid token." }, {status:400});

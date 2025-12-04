@@ -14,11 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useState } from "react";
 import { AlertCircle, Eye, EyeOff } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
 import z from "zod";
+import axios from "axios";
 
 const formSchema = z.object({
   email: z.email({
@@ -55,10 +55,14 @@ export const Login = () => {
   try {
     console.log("loging value", values)   
  
-    // await migrateGuestCart()
-    // If login does not return a value, just redirect after successful call
-    router.push("/");
-    router.refresh()
+    const res =  await axios.post("api/auth/login", values);
+
+    console.log("res", res)
+    if(res.status === 200){
+      console.log("login sucessful", res.data);
+      router.push("/")
+    }
+ 
   } catch (err: any) {
     setError(err.message);
   } finally {
