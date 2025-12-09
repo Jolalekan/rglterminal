@@ -60,7 +60,7 @@ export const Login = () => {
     console.log("res", res)
     if(res.status === 200){
       console.log("login sucessful", res.data);
-      router.push("/")
+      router.push("/dashboard")
     }
  
   } catch (err: any) {

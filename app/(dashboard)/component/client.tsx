@@ -5,15 +5,15 @@ import { DataTable } from "@/components/ui/data-table";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Spinner } from "@/components/ui/spinner";
 import { Plus } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { useState } from "react";
 import { MessageColumn, column } from "./colum";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface HomeClientProps {
+interface DashboardClientProps {
   data: MessageColumn[];
 }
-export const HomeClient: React.FC<HomeClientProps> = ({ data }) => {
+export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
