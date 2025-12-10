@@ -1,3 +1,4 @@
+import ChooseUs from '@/components/choose-us'
 import Hero from '@/components/hero'
 import Welcome from '@/components/welcome'
 
@@ -7,6 +8,7 @@ const HomePage
     <div>
         <Hero/>
         <Welcome/>
+        <ChooseUs/>
     </div>
   )
 }

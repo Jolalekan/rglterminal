@@ -34,7 +34,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-red-500 border-t  text-white tracking-tight leading-tight ">
+    <footer className="bg-yellow-600 border-t  text-white tracking-tight leading-tight ">
       <Container>
         <div className="px-4 sm:px-6 py-4 lg:px-8 ">
           {/* TOP */}
