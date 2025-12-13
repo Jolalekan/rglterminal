@@ -3,7 +3,7 @@ import React from "react";
 
 const Welcome = () => {
   return (
-    <section className="min-h-screen bg-gray-50 pb-20 pt-32"> {/* Added pt-32 */}
+    <section className="min-h-screen bg-gray-50 py-20"> {/* Added pt-32 */}
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Side */}

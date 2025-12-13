@@ -12,7 +12,7 @@ const Navbar = () => {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious()
+    const previous = scrollY.getPrevious() ?? 0
     
     setIsScrolled(latest > 50)
     
@@ -77,7 +77,7 @@ const Navbar = () => {
               <li>
                 <Link href="/request-quote" className={`px-4 py-2 rounded-md transition ${
                   isScrolled 
-                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                    ? 'bg-yellow-600 text-white hover:bg-yellow-700' 
                     : 'bg-white text-gray-900 hover:bg-gray-100'
                 }`}>
                   Request a Quote
