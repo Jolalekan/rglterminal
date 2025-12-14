@@ -1,9 +1,12 @@
-import React from 'react'
+import FormData from '@/components/form'
+import NeedUs from '@/components/need-us'
 
 const ContactPage = () => {
   return (
     <div>
-      ContactPage
+      <FormData/>
+      <NeedUs/>
+
         
     </div>
   )

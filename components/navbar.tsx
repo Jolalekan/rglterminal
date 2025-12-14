@@ -5,6 +5,17 @@ import Container from './ui/container'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
+import dynamic from 'next/dynamic'
+
+// Dynamically import QuoteForm with no SSR
+const QuoteForm = dynamic(() => import('./quote-form'), {
+  ssr: false,
+  loading: () => (
+    <button className="px-4 py-2 rounded-md transition font-medium bg-yellow-600 text-white">
+      Request a Quote
+    </button>
+  )
+})
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -75,13 +86,17 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/request-quote" className={`px-4 py-2 rounded-md transition ${
-                  isScrolled 
-                    ? 'bg-yellow-600 text-white hover:bg-yellow-700' 
-                    : 'bg-white text-gray-900 hover:bg-gray-100'
-                }`}>
-                  Request a Quote
-                </Link>
+                   <QuoteForm 
+                  trigger={
+                    <button className={`px-4 py-2 rounded-md transition font-medium ${
+                      isScrolled 
+                        ? 'bg-yellow-600 text-white hover:bg-yellow-700' 
+                        : 'bg-white text-gray-900 hover:bg-gray-100'
+                    }`}>
+                      Request a Quote
+                    </button>
+                  }
+                />
               </li>
             </ul>
           </nav>

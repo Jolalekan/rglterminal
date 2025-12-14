@@ -4,6 +4,17 @@ import { motion, AnimatePresence, animate } from 'framer-motion'
 import { Plus, Minus, Mail } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+// Dynamically import QuoteForm with no SSR
+const QuoteForm = dynamic(() => import('./quote-form'), {
+  ssr: false,
+  loading: () => (
+    <button className="px-4 py-2 rounded-md transition font-medium bg-yellow-600 text-white">
+      Request a Quote
+    </button>
+  )
+})
 
 const Frequently = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -77,16 +88,18 @@ const Frequently = () => {
               Our support team is here to help.
             </p>
 
-            <Link href="/request-quote">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-700 transition shadow-lg hover:shadow-xl flex items-center space-x-2 cursor-pointer"
-              >
-                <Mail size={20} />
-                <span>Request a Quote</span>
-              </motion.button>
-            </Link>
+             <QuoteForm 
+              trigger={
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-700 transition shadow-lg hover:shadow-xl flex items-center space-x-2 cursor-pointer"
+                >
+                  <Mail size={20} />
+                  <span>Request a Quote</span>
+                </motion.button>
+              }
+            />
 
             {/* Stats or Trust Badges */}
             <div className="grid grid-cols-2 gap-4 pt-6">
