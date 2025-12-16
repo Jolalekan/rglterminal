@@ -8,19 +8,8 @@ const Seamless = () => {
   const scrollText2 = "Reliable • Efficient • Secure • Professional • On-Time • "
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src="/container.jpg" 
-        alt="container background"
-        fill
-        className="object-cover"
-        priority
-      />
-      
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
-
+    <section className="bg-gradient-to-b from-white via-gray-50 to-yellow-50  relative w-full h-[400px] md:h-[500px] overflow-hidden">
+ 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center">
         
@@ -41,7 +30,7 @@ const Seamless = () => {
             {[...Array(10)].map((_, index) => (
               <span
                 key={index}
-                className="text-xl md:text-2xl font-semibold text-white/70 mx-3"
+                className="text-xl md:text-2xl font-semibold text-black/70 mx-3"
               >
                 {scrollText1}
               </span>
@@ -57,7 +46,7 @@ const Seamless = () => {
           transition={{ duration: 0.8 }}
           className="my-8 px-4"
         >
-          <h2 className="text-center text-4xl font-bold text-white md:text-6xl lg:text-7xl max-w-5xl">
+          <h2 className="text-center text-4xl font-bold text-black md:text-6xl lg:text-7xl max-w-5xl">
             Seamless Shipping and{' '}
             <span className="text-yellow-400 inline-block">
               <motion.span
@@ -105,7 +94,7 @@ const Seamless = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

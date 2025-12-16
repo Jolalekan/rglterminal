@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
-import {X, Send } from "lucide-react";
+import { X, Send } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { Button } from "@/components/ui/button";
@@ -132,8 +132,8 @@ const QuoteForm = ({ trigger }: QuoteFormProps) => {
                     Request a Quote
                   </DialogPrimitive.Title>
                   <DialogPrimitive.Description className="text-yellow-50 text-lg mt-2">
-                    Fill out the form below and we&apos;ll get back to you with a
-                    competitive quote within 24 hours.
+                    Fill out the form below and we&apos;ll get back to you with
+                    a competitive quote within 24 hours.
                   </DialogPrimitive.Description>
 
                   {/* Decorative elements */}
@@ -250,67 +250,61 @@ const QuoteForm = ({ trigger }: QuoteFormProps) => {
                         </h3>
 
                         <div className="w-full">
-  {/* Service Type */}
-  <FormField
-    control={form.control}
-    name="serviceType"
-    render={({ field }) => (
-      <FormItem>
-        <FormLabel>
-          Service Type <span className="text-red-500">*</span>
-        </FormLabel>
-        <Select
-          onValueChange={field.onChange}
-          defaultValue={field.value}
-        >
-          <FormControl>
-            <SelectTrigger className="cursor-pointer">
-              <SelectValue placeholder="Select a service" />
-            </SelectTrigger>
-          </FormControl>
-          <SelectContent>
-            <SelectItem value="bonded-warehousing">
-              Bonded Warehousing
-            </SelectItem>
-            <SelectItem value="container-storage">
-              Container Storage
-            </SelectItem>
-            <SelectItem value="barging">
-              Barging Services
-            </SelectItem>
-            <SelectItem value="in-stuffing">
-              In-Stuffing for Export
-            </SelectItem>
-            <SelectItem value="customs-clearance">
-              Customs Clearance
-            </SelectItem>
-            <SelectItem value="freight-forwarding">
-              Freight Forwarding
-            </SelectItem>
-          </SelectContent>
-        </Select>
-        <FormMessage />
-      </FormItem>
-    )}
-  />
-</div>
-                     
-                     
-                     
+                          {/* Service Type */}
+                          <FormField
+                            control={form.control}
+                            name="serviceType"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>
+                                  Service Type{" "}
+                                  <span className="text-red-500">*</span>
+                                </FormLabel>
+                                <Select
+                                  onValueChange={field.onChange}
+                                  defaultValue={field.value}
+                                >
+                                  <FormControl>
+                                    <SelectTrigger className="cursor-pointer">
+                                      <SelectValue placeholder="Select a service" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent>
+                                    <SelectItem value="bonded-warehousing">
+                                      Bonded Warehousing
+                                    </SelectItem>
+                                    <SelectItem value="container-storage">
+                                      Container Storage
+                                    </SelectItem>
+                                    <SelectItem value="barging">
+                                      Barging Services
+                                    </SelectItem>
+                                    <SelectItem value="in-stuffing">
+                                      In-Stuffing for Export
+                                    </SelectItem>
+                                    <SelectItem value="customs-clearance">
+                                      Customs Clearance
+                                    </SelectItem>
+                                    <SelectItem value="freight-forwarding">
+                                      Freight Forwarding
+                                    </SelectItem>
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       </div>
 
                       {/* Additional Information Section */}
                       <div className="pt-4 border-t">
-                  
-
                         <FormField
                           control={form.control}
                           name="requestQoute"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>
-                               Request Details
-                              </FormLabel>
+                              <FormLabel>Request Details</FormLabel>
                               <FormControl>
                                 <Textarea
                                   placeholder="Any special requirements, handling instructions, or additional information..."

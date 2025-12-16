@@ -3,11 +3,9 @@ import NeedUs from '@/components/need-us'
 
 const ContactPage = () => {
   return (
-    <div>
+    <div className=' bg-white'>
       <FormData/>
       <NeedUs/>
-
-        
     </div>
   )
 }

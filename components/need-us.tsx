@@ -2,10 +2,11 @@
 
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import Image from "next/image";
-import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const NeedUs = () => {
+  const router = useRouter()
   const contactInfo = [
     {
       icon: Phone,
@@ -44,7 +45,7 @@ const NeedUs = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
@@ -61,7 +62,8 @@ const NeedUs = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 80, damping: 15 }}
             className="space-y-8 lg:pl-12"
           >
             <motion.div variants={itemVariants}>
@@ -86,35 +88,43 @@ const NeedUs = () => {
               Reach out to us through any of the channels below.
             </motion.p>
 
-            {/* Contact Cards */}
-            <motion.div 
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4"
-            >
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.href}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-yellow-50 rounded-lg flex items-center justify-center group-hover:bg-yellow-100 transition-colors">
-                      <item.icon size={24} className="text-yellow-600" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-gray-500 font-medium mb-1">
-                        {item.label}
-                      </p>
-                      <p className="text-gray-900 font-semibold">
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
+            <motion.div
+  variants={containerVariants}
+  className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6"
+>
+  {contactInfo.map((item, index) => (
+    <motion.a
+      key={index}
+      href={item.href}
+      variants={itemVariants}
+      whileHover={{ scale: 1.05, y: -4 }}
+      className={`
+        bg-white rounded-2xl p-7
+        shadow-lg hover:shadow-2xl
+        transition-all duration-300
+        group cursor-pointer
+        ${index % 2 === 0 ? 'md:translate-y-8' : ''}
+      `}
+    >
+      <div className="flex items-start gap-4">
+        {/* Icon */}
+        <div className="flex-shrink-0 w-14 h-14 bg-yellow-50 rounded-xl flex items-center justify-center group-hover:bg-yellow-100 transition-colors">
+          <item.icon size={26} className="text-yellow-600" />
+        </div>
+
+        {/* Text */}
+        <div className="flex-1">
+          <p className="text-sm text-gray-500 font-medium mb-1">
+            {item.label}
+          </p>
+          <p className="text-gray-900 font-semibold leading-snug">
+            {item.value}
+          </p>
+        </div>
+      </div>
+    </motion.a>
+  ))}
+</motion.div>
 
             {/* CTA Button */}
             <motion.div variants={itemVariants} className="pt-6">
@@ -122,6 +132,7 @@ const NeedUs = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="cursor-pointer bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-700 transition shadow-lg hover:shadow-2xl flex items-center space-x-2"
+                onClick={() => router.push("/contact")}
               >
                 <span>Schedule a Consultation</span>
                 <svg 

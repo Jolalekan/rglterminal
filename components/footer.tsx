@@ -90,9 +90,10 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
                   <span>
-                    12, Olorunsogo street,<br />
-                    Victoria Island,<br />
-                    Lagos, Nigeria
+                    klm 26, Opp. Foreign Affair Academy,<br />
+                    Lagos/ Badagry Expressway,<br />
+                    Ayetoro/ Ijanikin,<br />
+                    Lagos State, Nigeria
                   </span>
                 </div>
                 
@@ -105,8 +106,11 @@ const Footer = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />
-                  <a href="tel:+2348023232444" className="hover:text-yellow-500 transition">
-                    +234 802 323 2444
+                  <a href="tel:+2349060005911" className="hover:text-yellow-500 transition">
+                    +234 906 600 5911
+                  </a>
+                  <a href="tel:+2348020992018" className="hover:text-yellow-500 transition">
+                    +234 802 099 2018
                   </a>
                 </div>
               </div>
@@ -116,6 +120,11 @@ const Footer = () => {
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="font-bold text-white text-lg">Company</h3>
               <ul className="space-y-2 text-sm">
+                <li>
+                  <Link href="/" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                    Home
+                  </Link>
+                </li>
                 <li>
                   <Link href="/about" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
                     About Us
@@ -131,11 +140,7 @@ const Footer = () => {
                     Contact Us
                   </Link>
                 </li>
-                <li>
-                  <Link href="/request-quote" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
-                    Request a Quote
-                  </Link>
-                </li>
+               
                 <li>
                   <Link href="/careers" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
                     Careers
@@ -149,30 +154,26 @@ const Footer = () => {
               <h3 className="font-bold text-white text-lg">Our Services</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/services/warehousing" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                  <Link href="/warehousing" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
                     Bonded Warehousing
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/storage" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                  <Link href="/storage" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
                     Container Storage
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/barging" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
-                    Barging Services
+                  <Link href="/bonded-terminal" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                    Bonded Terminal
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/stuffing" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
-                    In-Stuffing for Export
-                  </Link>
+                  <Link href="/maritime-shipping" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                    Maritime Shipping
+                  </Link> 
                 </li>
-                <li>
-                  <Link href="/track" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
-                    Track Shipment
-                  </Link>
-                </li>
+              
               </ul>
             </motion.div>
 

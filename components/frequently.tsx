@@ -1,76 +1,86 @@
-'use client'
+"use client";
 
-import { motion, AnimatePresence, animate } from 'framer-motion'
-import { Plus, Minus, Mail } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
+import { motion, AnimatePresence, animate } from "framer-motion";
+import {
+  Mail,
+  ChevronDown,
+  ArrowRight,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
 // Dynamically import QuoteForm with no SSR
-const QuoteForm = dynamic(() => import('./quote-form'), {
+const QuoteForm = dynamic(() => import("./quote-form"), {
   ssr: false,
   loading: () => (
     <button className="px-4 py-2 rounded-md transition font-medium bg-yellow-600 text-white">
       Request a Quote
     </button>
-  )
-})
+  ),
+});
 
 const Frequently = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
-  const [clientCount, setClientCount] = useState(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [clientCount, setClientCount] = useState(0);
 
-  // Animate counter from 470 to 500
+  // Animate counter from 19950 to 20000
   useEffect(() => {
-    const controls = animate(470, 500, {
+    const controls = animate(19950, 20000, {
       duration: 2,
       ease: "easeOut",
       onUpdate: (latest) => {
-        setClientCount(Math.floor(latest))
-      }
-    })
+        setClientCount(Math.floor(latest));
+      },
+    });
 
-    return controls.stop
-  }, [])
+    return controls.stop;
+  }, []);
 
   const features = [
     {
       title: "What services does Rolling Grazing Limited offer?",
-      description: "Rolling Grazing Limited Terminal provides a comprehensive range of logistics and goods management services, including bonded warehousing, container storage, barging, and in-stuffing for export. Our goal is to facilitate efficient and secure logistics solutions tailored to your business needs."
+      description:
+        "Rolling Grazing Limited Terminal provides a comprehensive range of logistics and goods management services, including bonded warehousing, container storage, barging, and in-stuffing for export. Our goal is to facilitate efficient and secure logistics solutions tailored to your business needs.",
     },
     {
       title: "How can I get a quote for your services?",
-      description: "You can request a quote by filling out the 'Request a Quote' form on our website. Provide details about your logistics needs, and our team will promptly get back to you with a customized quote."
+      description:
+        "You can request a quote by filling out the 'Request a Quote' form on our website. Provide details about your logistics needs, and our team will promptly get back to you with a customized quote.",
     },
     {
       title: "What types of goods can be stored in your facilities?",
-      description: "Our facilities can accommodate a wide variety of goods, including general cargo, hazardous materials, and oversized items. Please contact us for specific storage requirements and regulations."
+      description:
+        "Our facilities can accommodate a wide variety of goods, including general cargo, hazardous materials, and oversized items. Please contact us for specific storage requirements and regulations.",
     },
     {
       title: "How secure is my cargo at Rolling Grazing Terminal?",
-      description: "Security is our top priority at Rolling Grazing Terminal. We utilize state-of-the-art security systems, 24/7 surveillance, and strict access controls to ensure the safety of your cargo at all times."
+      description:
+        "Security is our top priority at Rolling Grazing Terminal. We utilize state-of-the-art security systems, 24/7 surveillance, and strict access controls to ensure the safety of your cargo at all times.",
     },
     {
       title: "Do you offer transportation services for my goods?",
-      description: "Yes, we offer comprehensive transportation services, including barging and road transport. Our team can help you coordinate the safe and timely delivery of your goods."
-    }
-  ]
+      description:
+        "Yes, we offer comprehensive transportation services, including barging and road transport. Our team can help you coordinate the safe and timely delivery of your goods.",
+    },
+  ];
 
   const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20 scroll-mt-24">
+    <section
+      className="bg-gradient-to-b from-white via-yellow-50 to-gray-50 py-20 scroll-mt-24"
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          
           {/* Left Side - Header */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ type: "spring", stiffness: 80, damping: 15 }}
             className="lg:sticky lg:top-32 space-y-6"
           >
             <div>
@@ -80,26 +90,63 @@ const Frequently = () => {
             </div>
 
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Frequently Asked <span className="text-yellow-600">Questions</span>
+              Frequently Asked{" "}
+              <span className="text-yellow-600">Questions</span>
             </h2>
-            
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Quick answers to questions you may have. Can&apos;t find what you&apos;re looking for? 
-              Our support team is here to help.
-            </p>
 
-             <QuoteForm 
-              trigger={
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-700 transition shadow-lg hover:shadow-xl flex items-center space-x-2 cursor-pointer"
-                >
-                  <Mail size={20} />
-                  <span>Request a Quote</span>
-                </motion.button>
-              }
-            />
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Quick answers to questions you may have. Can&apos;t find what
+              you&apos;re looking for? Our support team is here to help.
+            </p>
+<QuoteForm
+  trigger={
+    <motion.button
+      initial="initial"
+      whileHover="hover"
+      whileTap={{ scale: 0.95 }}
+      className="
+        relative px-8 py-4 rounded-lg font-semibold
+        overflow-hidden inline-flex items-center gap-3
+        bg-yellow-600 text-white
+        shadow-lg hover:shadow-xl
+        cursor-pointer
+      "
+    >
+      {/* Sliding background overlay */}
+      <motion.span
+        aria-hidden
+        className="absolute inset-0 bg-yellow-700"
+        variants={{
+          initial: { x: '-100%' },
+          hover: { x: 0 }
+        }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      />
+
+      {/* Icon */}
+      <Mail size={20} className="relative z-10" />
+
+      {/* Text */}
+      <span className="relative z-10 whitespace-nowrap">
+        Request a Quote
+      </span>
+
+      {/* Arrow appears on hover */}
+      <motion.span
+        className="relative z-10 flex items-center"
+        variants={{
+          initial: { opacity: 0, x: -8 },
+          hover: { opacity: 1, x: 0 }
+        }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
+      >
+        <ArrowRight className="w-5 h-5" />
+      </motion.span>
+    </motion.button>
+  }
+/>
+
+
 
             {/* Stats or Trust Badges */}
             <div className="grid grid-cols-2 gap-4 pt-6">
@@ -108,7 +155,7 @@ const Frequently = () => {
                 <p className="text-sm text-gray-600">Support Available</p>
               </div>
               <div className="bg-white rounded-xl p-4 shadow-md">
-                <motion.p 
+                <motion.p
                   initial={{ scale: 0.5, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true }}
@@ -135,7 +182,6 @@ const Frequently = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
               >
@@ -147,16 +193,14 @@ const Frequently = () => {
                   <span className="text-lg font-semibold text-gray-900 pr-4">
                     {item.title}
                   </span>
+
                   <motion.div
-                    animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="flex-shrink-0"
+                    animate={{
+                      rotate: openIndex === index ? 180 : 0,
+                      color: openIndex === index ? "#ca8a04" : "#9ca3af",
+                    }}
                   >
-                    {openIndex === index ? (
-                      <Minus className="w-6 h-6 text-yellow-600" />
-                    ) : (
-                      <Plus className="w-6 h-6 text-gray-400" />
-                    )}
+                    <ChevronDown className="w-6 h-6 text-yellow-600" />
                   </motion.div>
                 </button>
 
@@ -197,21 +241,57 @@ const Frequently = () => {
             Still have questions?
           </h3>
           <p className="text-yellow-50 mb-6 text-lg">
-            Can&apos;t find the answer you&apos;re looking for? Our friendly team is here to help.
+            Can&apos;t find the answer you&apos;re looking for? Our friendly
+            team is here to help.
           </p>
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg cursor-pointer"
-            >
-              Get in Touch
-            </motion.button>
-          </Link>
+         <Link href="/contact">
+  <motion.button
+    initial="initial"
+    whileHover="hover"
+    whileTap={{ scale: 0.95 }}
+    className="
+      relative px-8 py-4 rounded-lg font-semibold
+      overflow-hidden inline-flex items-center gap-3
+      bg-white text-yellow-600
+      shadow-lg hover:shadow-xl
+      cursor-pointer
+    "
+  >
+    {/* Sliding background overlay */}
+    <motion.span
+      aria-hidden
+      className="absolute inset-0 bg-gray-100"
+      variants={{
+        initial: { x: '-100%' },
+        hover: { x: 0 }
+      }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+    />
+
+    {/* Text */}
+    <span className="relative z-10 whitespace-nowrap">
+      Get in Touch
+    </span>
+
+    {/* Arrow — appears only on hover */}
+    <motion.span
+      className="relative z-10 flex items-center"
+      variants={{
+        initial: { opacity: 0, x: -8 },
+        hover: { opacity: 1, x: 0 }
+      }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+    >
+      <ArrowRight className="w-5 h-5" />
+    </motion.span>
+  </motion.button>
+</Link>
+
+
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Frequently
+export default Frequently;
