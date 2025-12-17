@@ -58,7 +58,7 @@ const Welcome = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-8">
+            <div className=" pt-8">
               <Link href="/about">
                 <motion.div
                   className="relative bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg cursor-pointer overflow-hidden inline-flex items-center gap-2"
@@ -76,7 +76,7 @@ const Welcome = () => {
                   />
                   
                   {/* Text content */}
-                  <span className="relative z-10">Learn More</span>
+                  <span className="relative z-10">About Us</span>
                   
                   {/* Arrow that appears on hover */}
                   <motion.div
@@ -92,15 +92,7 @@ const Welcome = () => {
                 </motion.div>
               </Link>
 
-              <Link href="/contact">
-                <motion.button 
-                  whileHover={{ scale: 1.05, borderColor: '#2563eb', color: '#2563eb' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold transition"
-                >
-                  Contact Us
-                </motion.button>
-              </Link>
+         
             </div>
           </motion.div>
         </div>
