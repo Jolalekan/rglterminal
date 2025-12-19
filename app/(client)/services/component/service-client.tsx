@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, animate } from 'framer-motion'
-import { ArrowRight, Package, Warehouse, Container, Truck, Ship } from 'lucide-react'
+import { ArrowRight, Package, Warehouse, Container, Ship } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import ChooseUs from '@/components/choose-us'
@@ -11,7 +11,7 @@ import ChooseUs from '@/components/choose-us'
 const ServicesClient = () => {
   const Services = [
     {
-      image: "/img2.jpg",
+      image: "/img1.jpg",
       href: "/warehousing",
       title: "Bonded Warehousing",
       description: "Secure and efficient storage solutions for your imported goods with full customs compliance.",
@@ -19,7 +19,7 @@ const ServicesClient = () => {
       color: "yellow"
     },
     {
-      image: "/img3.jpg",
+      image: "/container1.jpg",
       href: "/storage",
       title: "Container Storage",
       description: "Flexible container storage options tailored to your needs with 24/7 security monitoring.",
@@ -27,17 +27,17 @@ const ServicesClient = () => {
       color: "blue"
     },
     {
-      image: "/img4.jpg",
-      href: "/barging",
-      title: "Barging Services",
+      image: "/ship.jpg",
+      href: "/maritime-shipping",
+      title: "Shipping",
       description: "Efficient water transport solutions connecting major ports and inland waterways.",
       icon: Ship,
       color: "green"
     },
     {
-      image: "/img2.jpg",
-      href: "/bulk-handling",
-      title: "Bulk Cargo Handling",
+      image: "/img12.jpg",
+      href: "/bonded-terminal",
+      title: "Bonded Terminal",
       description: "Specialized handling for bulk commodities with state-of-the-art equipment and expertise.",
       icon: Package,
       color: "purple"
@@ -235,42 +235,6 @@ const ServicesClient = () => {
 
       <ChooseUs/>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-yellow-600 to-yellow-500">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <Truck className="w-16 h-16 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-yellow-50 mb-8">
-              Contact us today to discuss your logistics needs and discover how we can help your business thrive.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg"
-              >
-                Request a Quote
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-yellow-600 transition"
-              >
-                Contact Us
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }

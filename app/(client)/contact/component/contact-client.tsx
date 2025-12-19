@@ -36,32 +36,6 @@ const LocationMap = dynamic(() => import('@/components/location-map'), {
 })
 
 const ContactClient = () => {
-  const contactInfo = [
-    {
-      icon: MapPin,
-      title: "Visit Us",
-      details: ["12, Olorunsogo street", "Victoria Island", "Lagos, Nigeria"],
-      link: "https://maps.google.com/?q=12+Olorunsogo+street+Victoria+Island+Lagos"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      details: ["+234 802 323 2444", "+234 906 000 5911"],
-      link: "tel:+2348023232444"
-    },
-    {
-      icon: Mail,
-      title: "Email Us",
-      details: ["info@rglterminal.com", "support@rglterminal.com"],
-      link: "mailto:info@rglterminal.com"
-    },
-    {
-      icon: Clock,
-      title: "Working Hours",
-      details: ["Monday - Friday: 8AM - 6PM", "Saturday: 9AM - 2PM", "Sunday: Closed"],
-      link: null
-    }
-  ]
 
   return (
     <div className="bg-white">
@@ -88,41 +62,8 @@ const ContactClient = () => {
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                  <info.icon className="w-6 h-6 text-yellow-600" />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{info.title}</h3>
-                {info.link ? (
-                  <a href={info.link} className="space-y-1 hover:text-yellow-600 transition-colors">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-600 text-sm">{detail}</p>
-                    ))}
-                  </a>
-                ) : (
-                  <div className="space-y-1">
-                    {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-600 text-sm">{detail}</p>
-                    ))}
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+         {/* Contact Form */}
+      <FormData />
 
       {/* Map & Form Section */}
       <section className="py-20 bg-white">
@@ -150,7 +91,7 @@ const ContactClient = () => {
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us Here</h2>
                 <p className="text-gray-600 mb-6">
-                  Visit our office or reach out through any of the channels below. We're here to help!
+                  Visit our office or reach out through any of the channels below. We&apos;re here to help!
                 </p>
               </div>
 
@@ -177,6 +118,13 @@ const ContactClient = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
                     <p className="text-gray-700">info@rglterminal.com</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Clock className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-1">Working Hours</h4>
+                    <p className="text-gray-700">Mon - Fri: 8AM - 6PM</p>
                   </div>
                 </div>
               </div>
@@ -206,8 +154,7 @@ const ContactClient = () => {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <FormData />
+   
     </div>
   )
 }

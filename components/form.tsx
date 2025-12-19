@@ -92,28 +92,10 @@ const FormData = () => {
   }
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-20 scroll-mt-24">
+    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-8 scroll-mt-24">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <span className="text-yellow-600 font-semibold text-sm uppercase tracking-wider">
-              Get In Touch
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mt-2 mb-4">
-              Contact <span className="text-yellow-600">Us</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Have a question or need assistance? Fill out the form below and our team will get back to you within 24 hours.
-            </p>
-          </motion.div>
+        
 
           {/* Form Card */}
           <motion.div
@@ -307,40 +289,7 @@ const FormData = () => {
             </Form>
           </motion.div>
 
-          {/* Additional Info Cards */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
-          >
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-6 h-6 text-yellow-600" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Call Us</h3>
-              <p className="text-gray-600 text-sm">+234 802 323 2444</p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-6 h-6 text-yellow-600" />
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Email Us</h3>
-              <p className="text-gray-600 text-sm">info@rglbondedterminal.com</p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-lg text-center">
-              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Working Hours</h3>
-              <p className="text-gray-600 text-sm">Mon - Fri: 8AM - 6PM</p>
-            </div>
-          </motion.div>
+      
         </div>
       </div>
     </section>

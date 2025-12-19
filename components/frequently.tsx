@@ -229,66 +229,7 @@ const Frequently = () => {
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-16 bg-gradient-to-r from-yellow-600 to-yellow-500 rounded-2xl p-8 md:p-12 text-center shadow-2xl"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Still have questions?
-          </h3>
-          <p className="text-yellow-50 mb-6 text-lg">
-            Can&apos;t find the answer you&apos;re looking for? Our friendly
-            team is here to help.
-          </p>
-         <Link href="/contact">
-  <motion.button
-    initial="initial"
-    whileHover="hover"
-    whileTap={{ scale: 0.95 }}
-    className="
-      relative px-8 py-4 rounded-lg font-semibold
-      overflow-hidden inline-flex items-center gap-3
-      bg-white text-yellow-600
-      shadow-lg hover:shadow-xl
-      cursor-pointer
-    "
-  >
-    {/* Sliding background overlay */}
-    <motion.span
-      aria-hidden
-      className="absolute inset-0 bg-gray-100"
-      variants={{
-        initial: { x: '-100%' },
-        hover: { x: 0 }
-      }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-    />
-
-    {/* Text */}
-    <span className="relative z-10 whitespace-nowrap">
-      Get in Touch
-    </span>
-
-    {/* Arrow — appears only on hover */}
-    <motion.span
-      className="relative z-10 flex items-center"
-      variants={{
-        initial: { opacity: 0, x: -8 },
-        hover: { opacity: 1, x: 0 }
-      }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-    >
-      <ArrowRight className="w-5 h-5" />
-    </motion.span>
-  </motion.button>
-</Link>
-
-
-        </motion.div>
+     
       </div>
     </section>
   );

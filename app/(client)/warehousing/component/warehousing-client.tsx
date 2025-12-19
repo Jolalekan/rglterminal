@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Package, Shield, Clock, Lock, FileText, CirclePlus } from 'lucide-react'
@@ -79,7 +81,7 @@ const WarehousingClient = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="h-screen relative h-[60vh] min-h-[500px] overflow-hidden">
+      <section className="h-screen relative min-h-[500px] overflow-hidden">
         <Image
           src="/img1.jpg"
           alt="Bonded Warehousing"
@@ -113,49 +115,6 @@ const WarehousingClient = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Why Choose Our <span className="text-yellow-600">Warehousing</span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience world-class bonded warehousing with cutting-edge facilities and expert management.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all group"
-              >
-                <div className="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-600 transition-colors">
-                  <feature.icon className="w-8 h-8 text-yellow-600 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -169,7 +128,7 @@ const WarehousingClient = () => {
               className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/img3.jpg"
+                src="/img1.jpg"
                 alt="Warehouse facility"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -219,42 +178,7 @@ const WarehousingClient = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-yellow-600 to-yellow-500">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <Package className="w-16 h-16 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Store Your Goods?
-            </h2>
-            <p className="text-xl text-yellow-50 mb-8">
-              Get in touch with our team to discuss your warehousing needs and receive a customized solution.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg"
-              >
-                Contact Us
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-yellow-600 transition"
-              >
-                View All Services
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+     
     </div>
   )
 }

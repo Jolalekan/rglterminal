@@ -4,29 +4,35 @@ import Frequently from "@/components/frequently"
 import Welcome from "@/components/welcome"
 import { motion } from "framer-motion"
 import { Target, Lightbulb, Award, Users } from "lucide-react"
+import Image from "next/image";
+import { useState } from "react";
 
 const AboutClient = () => {
-  
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const values = [
     {
       icon: Award,
       title: "Integrity",
-      description: "We uphold the highest standards of honesty and ethical conduct in all our operations."
+      description: "We uphold the highest standards of honesty and ethical conduct in all our operations.",
+      bgImage: "/img1.jpg" 
     },
     {
       icon: Target,
       title: "Excellence",
-      description: "We strive for excellence in every aspect of our service delivery and client relationships."
+      description: "We strive for excellence in every aspect of our service delivery and client relationships.",
+      bgImage: "/img2.jpg"  
     },
     {
       icon: Lightbulb,
       title: "Innovation",
-      description: "We embrace new technologies and creative solutions to improve our logistics services."
+      description: "We embrace new technologies and creative solutions to improve our logistics services.",
+      bgImage: "/img3.jpg"
     },
     {
       icon: Users,
       title: "Sustainability",
-      description: "We are committed to environmentally responsible practices that protect our planet."
+      description: "We are committed to environmentally responsible practices that protect our planet.",
+      bgImage: "/img4.jpg"
     }
   ]
 
@@ -146,7 +152,111 @@ const AboutClient = () => {
             </p>
           </motion.div>
 
-          <motion.div
+                 <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="min-h-[450px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+                      >
+                        {values.map((value, index) => (
+                          <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            onHoverStart={() => setHoveredIndex(index)}
+                            onHoverEnd={() => setHoveredIndex(null)}
+                            whileHover={{ y: -10 }}
+                            className="relative bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group cursor-pointer flex flex-col" 
+                          >
+                            {/* Background Image with circle expand effect */}
+                            <motion.div
+                              className="absolute inset-0 z-0 flex items-start justify-center pt-6"
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ 
+                                scale: hoveredIndex === index ? 3 : 0,
+                                opacity: hoveredIndex === index ? 1 : 0
+                              }}
+                              transition={{ 
+                                duration: 0.6, 
+                                ease: 'easeOut',
+                                scale: { type: 'spring', stiffness: 100, damping: 15 }
+                              }}
+                            >
+                              <div className="relative w-96 h-96 rounded-full overflow-hidden">
+                                <Image
+                                  src={value.bgImage}
+                                  alt={value.title}
+                                  fill
+                                  className="object-cover"
+                                />
+                                {/* Lighter overlay for faded effect */}
+                                <div className="absolute inset-0 bg-white/70" />
+                              </div>
+                            </motion.div>
+            
+                            {/* Content */}
+                            <div className="relative z-10 p-8 flex flex-col flex-1">
+                              {/* Icon */}
+                              <motion.div
+                                className="mb-8 flex justify-center"
+                                animate={{
+                                  scale: hoveredIndex === index ? 1.15 : 1,
+                                }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                 <div className="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-600 transition-colors">
+                  <value.icon className="w-8 h-8 text-yellow-600 group-hover:text-white transition-colors" />
+                </div>
+                              </motion.div>
+            
+                              {/* Title */}
+                              <motion.h3
+                                className={`text-2xl font-bold mb-4 text-center transition-colors duration-300 ${
+                                  hoveredIndex === index ? 'text-yellow-600' : 'text-gray-900'
+                                }`}
+                                animate={{
+                                  scale: hoveredIndex === index ? 1.05 : 1,
+                                }}
+                              >
+                                {value.title}
+                              </motion.h3>
+            
+                              {/* Description */}
+                              <motion.p
+                                className={`text-center leading-relaxed transition-colors duration-300 flex-1 ${
+                                  hoveredIndex === index ? 'text-gray-700 font-medium' : 'text-gray-600'
+                                }`}
+                              >
+                                {value.description}
+                              </motion.p>
+                            </div>
+            
+                            {/* Decorative border on hover */}
+                            <motion.div
+                              className="absolute bottom-0 left-0 right-0 h-1 bg-yellow-600"
+                              initial={{ scaleX: 0 }}
+                              animate={{ scaleX: hoveredIndex === index ? 1 : 0 }}
+                              transition={{ duration: 0.3 }}
+                              style={{ originX: 0 }}
+                            />
+            
+                            {/* Corner accent */}
+                            <motion.div
+                              className="absolute top-0 right-0 w-20 h-20"
+                              initial={{ scale: 0, rotate: 0 }}
+                              animate={{ 
+                                scale: hoveredIndex === index ? 1 : 0,
+                                rotate: hoveredIndex === index ? 45 : 0
+                              }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <div className="w-full h-full bg-yellow-600 opacity-20" />
+                            </motion.div>
+                          </motion.div>
+                        ))}
+                      </motion.div>
+
+          {/* <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -167,7 +277,7 @@ const AboutClient = () => {
                 <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
