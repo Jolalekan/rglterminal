@@ -1,38 +1,38 @@
 import { truncateText } from "@/lib/truncate";
-import { QuoteRequest } from "@/type";
+import { Contact } from "@/type";
 import { format } from "date-fns";
 
-interface AllMessagesProps {
-  messages: QuoteRequest[];
-  onSelect: (message: QuoteRequest) => void;
+interface AllContactProps {
+  data: Contact[];
+  onSelect: (data: Contact) => void;
 }
 
-const AllMessages: React.FC<AllMessagesProps> = ({ messages, onSelect }) => {
+const AllContacts: React.FC<AllContactProps> = ({ data, onSelect }) => {
 
   return (
     <div className=" bg-white w-full">
       <div >
         <div className="space-y-2">   
-          {messages.map((message) => (
+          {data.map((item) => (
             <div 
-              key={message.id}
+              key={item.id}
               className="border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition"
-              onClick={() => onSelect(message)}
+              onClick={() => onSelect(item)}
             >
               {/* Top Row */}
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">
-                  {message.fullName}
+                  {item.firstName}
                 </span>
 
                 <span className="text-xs text-gray-400">
-                  {format(message.createdAt, "PPP")}
+                  {format(item.createdAt, "PPP")}
                 </span>
               </div>
 
               {/* Preview */}
               <span className="text-xs text-gray-600 block mt-1">
-                {truncateText(message.body, 40)}
+                {truncateText(item.message, 40)}
               </span>
             </div>
           ))}
@@ -42,4 +42,4 @@ const AllMessages: React.FC<AllMessagesProps> = ({ messages, onSelect }) => {
   );
 };
 
-export default AllMessages;
+export default AllContacts;

@@ -23,7 +23,7 @@ export default async function DashboardLayout({
       <div className=" h-full flex bg-white ">
       <div className="w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4">
         <Link
-          href="/"
+          href="/dashboard"
           className="flex flex-col items-center justify-center lg:justify-start gap-2"
         >
           <Image src="/logo.jpg" alt="logo" width={60} height={60} />

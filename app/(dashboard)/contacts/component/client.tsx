@@ -1,19 +1,19 @@
 "use client";
 
-import AllMessages from "@/components/all-messages";
-import DisplayMessages from "@/components/display-messages";
+import AllContacts from "@/components/all-contacts";
+import DisplayContactMessages from "@/components/display-contact";
 import PersonalInfo from "@/components/personal-info";
 import { Input } from "@/components/ui/input";
-import { Message } from "@/type";
+import { Contact} from "@/type";
 import { MessageSquare } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
-interface MessageClientProps {
-    messages: Message[]
+interface ContactClientProps {
+    contactRequest: Contact[]
 }
-export const MessageClient:React.FC<MessageClientProps> =({
-    messages
+export const ContactClient:React.FC<ContactClientProps> =({
+    contactRequest
   }
   )=>{
   const router = useRouter();
@@ -22,13 +22,12 @@ export const MessageClient:React.FC<MessageClientProps> =({
   // const [selected, setSelected] = useState<Message | null>(null);
 
     const selectedId = searchParams.get("id");
-  const selected = useMemo(
-    () => messages.find((msg) => msg.id === selectedId) || null,
-    [selectedId, messages]
+  const selected = useMemo(() => contactRequest.find((contact) => contact.id === selectedId) || null,
+    [selectedId, contactRequest]
   );
 
-  const handleSelect = (msg: Message) => {
-    router.push(`?id=${msg.id}`, { scroll: false });
+  const handleSelect = (contact: Contact) => {
+    router.push(`?id=${contact.id}`, { scroll: false });
   };
     return (
       <div className="p-6">
@@ -52,35 +51,21 @@ export const MessageClient:React.FC<MessageClientProps> =({
       <section className="grid grid-cols-1 md:grid-cols-12 gap-2">
         {/* Message List */}
         <div className="md:col-span-3">
-          <AllMessages
-            messages={messages}
+          <AllContacts
+            data={contactRequest}
             onSelect={handleSelect}
           />
         </div>
 
         {/* Message Body */}
         <div className="md:col-span-6">
-          <DisplayMessages 
+          <DisplayContactMessages 
             data={selected} 
             />
         </div>
 
-        {/* User Info */}
-        <div className="md:col-span-3">
-          <PersonalInfo data={selected} />
-        </div>
       </section>
-      {/* <section className="flex justify-between gap-4">
-            <div className="w-1/3">
-                <AllMessages/>
-            </div>
-            <div className="w-2/3">
-                <DisplayMessages/>
-            </div>
-            <div className="w-1/3">
-                <PersonalInfo/>
-            </div>
-        </section> */}
+
     </div>
     )
 }

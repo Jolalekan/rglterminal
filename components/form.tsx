@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import toast from "react-hot-toast"
+import axios from "axios"
 
 
 // Form validation schema
@@ -60,9 +61,15 @@ const FormData = () => {
     try {
       // TODO: Add your API call here
       console.log(values)
+      const response = await axios.post("/api/contacts",values )
       
-      toast.success( "Message sent successfully! We'll get back to you as soon as possible.",
-      )
+            console.log("response", response)
+            if(response.status === 200){
+              
+              toast.success( "Message sent successfully! We'll get back to you as soon as possible."
+              ) 
+            }
+      
       
       form.reset()
     } catch (error) {

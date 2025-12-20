@@ -1,27 +1,31 @@
 import { format } from "date-fns";
 import prismadb from "@/lib/prismadb";
 import { DashboardClient } from "../component/client";
-import { MessageColumn } from "../component/colum";
+import {  QuoteRequestColumn } from "../component/colum";
+import { getQuoteStatusCounts } from "@/action/quote-action";
 
 export default async function DashboardPage() {
-    const message = await prismadb.message.findMany({
+    const stats = await getQuoteStatusCounts();
+    const quoteRequest = await prismadb.quoteRequest.findMany({
         orderBy:{
             createdAt:"desc"
         }
     })
 
-    const formattedMessage:MessageColumn[] = message.map((item=>({
+    const formattedRequest:QuoteRequestColumn[] = quoteRequest.map((item=>({
         id: item.id,
-        name: item.name,
+        fullName: item.fullName,
         email:item.email,
-        type:item.type,
+        type:item.serviceType,
         status:item.status,
         phone:item.phone,
         createdAt:format(item.createdAt, "MMMM, do, yyyy")
     })))
   return (
     <div className="p-8 pt-6">
-        <DashboardClient data={formattedMessage}
+        <DashboardClient 
+            data={formattedRequest}
+            stats={stats}
         />
     </div>
   )

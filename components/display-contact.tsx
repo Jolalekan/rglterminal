@@ -1,15 +1,15 @@
-import { QuoteRequest } from "@/type";
+import { Contact } from "@/type";
 import { format } from "date-fns";
 import { Mail, Phone, Calendar, MessageSquare, Reply } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import EmailReplyModal from "./email-reply";
 
-interface DisplayMessagesProps {
-  data: QuoteRequest | null;
+interface DisplayContactMessagesProps {
+  data: Contact | null;
 }
 
-const DisplayMessages: React.FC<DisplayMessagesProps> = ({ data }) => {
+const DisplayContactMessages: React.FC<DisplayContactMessagesProps> = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!data) {
@@ -29,7 +29,7 @@ const DisplayMessages: React.FC<DisplayMessagesProps> = ({ data }) => {
         <div className="border-b p-4 bg-gray-50">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900">{data.fullName}</h3>
+              <h3 className="text-xl font-semibold text-gray-900">{data.firstName}</h3>
               <p className="text-sm text-gray-500 mt-1">
                 {format(new Date(data.createdAt), "PPP 'at' p")}
               </p>
@@ -72,7 +72,7 @@ const DisplayMessages: React.FC<DisplayMessagesProps> = ({ data }) => {
           </h4>
           <div className="prose prose-sm max-w-none">
             <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
-              {data.body}
+              {data.message}
             </p>
           </div>
         </div>
@@ -91,14 +91,14 @@ const DisplayMessages: React.FC<DisplayMessagesProps> = ({ data }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         recipientEmail={data.email}
-        recipientName={data.fullName}
-        originalMessage={data.body}
+        recipientName={data.firstName}
+        originalMessage={data.message}
       />
     </>
   );
 };
 
-export default DisplayMessages;
+export default DisplayContactMessages;
 
 // import { Message } from "@/type";
 // import { format } from "date-fns";

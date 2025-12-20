@@ -2,18 +2,18 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type MessageColumn={
+export type QuoteRequestColumn={
     id:string;
-    name:string;
+    fullName:string;
     email:string;
     type:string;
     status:string;
     createdAt: string;
 }
 
-export const column:ColumnDef<MessageColumn>[]=[
+export const column:ColumnDef<QuoteRequestColumn>[]=[
     {
-        accessorKey:"name",
+        accessorKey:"fullName",
         header:"Name"
     },
     {
@@ -22,7 +22,7 @@ export const column:ColumnDef<MessageColumn>[]=[
     },
     {
         accessorKey:"type",
-        header:"Type"
+        header:"Service"
     },
     {
         accessorKey:"status",

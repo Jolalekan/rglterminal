@@ -7,20 +7,35 @@ import { Spinner } from "@/components/ui/spinner";
 import { Plus } from "lucide-react";
 import {  useRouter } from "next/navigation";
 import { useState } from "react";
-import { MessageColumn, column } from "./colum";
+import { QuoteRequestColumn, column } from "./colum";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {  getTotalQuotes } from "@/action/get-quote";
+import { getTotalContacts } from "@/action/get-total-contact";
+
+
+interface Status{ 
+  total: number; 
+  new: number; 
+  read: number; 
+  responded: number; 
+}
 
 interface DashboardClientProps {
-  data: MessageColumn[];
+  data: QuoteRequestColumn[];
+  stats:Status
 }
-export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
+export const DashboardClient: React.FC<DashboardClientProps> = ({ 
+  data,
+  stats 
+}) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-
+  const totalQuote = getTotalQuotes()
+  const totalContacts = getTotalContacts()
   const handleAddNew = () => {
     setLoading(true);
 
-    router.push(`/message/new`);
+    router.push(`/quote-request/new`);
   };
   return (
     <>
@@ -50,7 +65,7 @@ export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
 
               <CardContent>
                 <div className="text-2xl font-bold">
-                    12
+                   16
                   {/* {formatter.format(totalRevenue)} */}
                 </div>
               </CardContent>
@@ -64,8 +79,8 @@ export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
               </CardHeader>
 
               <CardContent>
-                <div className="text-2xl font-bold">
-                    13
+                <div className="text-2xl font-bold text-red-600">
+                     {stats.new}
                   {/* {formatter.format(totalRevenue)} */}
                 </div>
               </CardContent>
@@ -80,7 +95,7 @@ export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
 
               <CardContent>
                 <div className="text-2xl font-bold">
-                    16
+                    {totalContacts}
                   {/* {formatter.format(totalRevenue)} */}
                 </div>
               </CardContent>
@@ -95,7 +110,7 @@ export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
 
               <CardContent>
                 <div className="text-2xl font-bold">
-                    23
+                    {totalQuote}
                   {/* {formatter.format(totalRevenue)} */}
                 </div>
               </CardContent>
@@ -111,7 +126,7 @@ export const DashboardClient: React.FC<DashboardClientProps> = ({ data }) => {
           columns={column}
           data={data}
           searchkey="name"
-         onRowClick={(row) => router.push(`/message?id=${row.id}`)}
+         onRowClick={(row) => router.push(`/quote-request?id=${row.id}`)}
         />
       )}
     </>

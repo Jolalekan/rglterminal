@@ -27,13 +27,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 // Form validation schema
 const quoteSchema = z.object({
   fullName: z.string().min(2, {
     message: "Full name must be at least 2 characters.",
   }),
-  email: z.string().email({
+  email: z.email({
     message: "Please enter a valid email address.",
   }),
   phone: z.string().min(10, {
@@ -44,7 +45,9 @@ const quoteSchema = z.object({
     message: "Please select a service type.",
   }),
 
-  requestQoute: z.string().optional(),
+  body: z.string().min(2,{
+    message:"Message must be more than 2 character"
+  }),
 });
 
 interface QuoteFormProps {
@@ -62,22 +65,27 @@ const QuoteForm = ({ trigger }: QuoteFormProps) => {
       phone: "",
       company: "",
       serviceType: "",
-      requestQoute: "",
+      body: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof quoteSchema>) {
     try {
       console.log(values);
+      const response = await axios.post("/api/quote-request",values )
 
-      toast.success(
-        "Quote request submitted! We'll send you a detailed quote within 24 hours."
-      );
+      console.log("response", response)
+      if(response.status === 200){
+        toast.success(
+          "Quote request submitted! We'll send you a detailed quote within 24 hours."
+        );
+      }
 
       form.reset();
       setOpen(false);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
+      
     }
   }
 
@@ -270,23 +278,29 @@ const QuoteForm = ({ trigger }: QuoteFormProps) => {
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    <SelectItem value="bonded-warehousing">
+                                    <SelectItem value="Export">
+                                      Export
+                                    </SelectItem>
+                                    <SelectItem value="ShipItems">
+                                      Ship Items
+                                    </SelectItem>
+                                    <SelectItem value="Groupage">
+                                      Groupage
+                                    </SelectItem>
+                                    <SelectItem value="BondedWarehousing">
                                       Bonded Warehousing
                                     </SelectItem>
-                                    <SelectItem value="container-storage">
+                                    <SelectItem value="ContainerStorage">
                                       Container Storage
                                     </SelectItem>
-                                    <SelectItem value="barging">
-                                      Barging Services
+                                    <SelectItem value="MaritimeShipping">
+                                      Maritime Shipping
                                     </SelectItem>
-                                    <SelectItem value="in-stuffing">
-                                      In-Stuffing for Export
+                                    <SelectItem value="Haulage">
+                                      Haulage
                                     </SelectItem>
-                                    <SelectItem value="customs-clearance">
-                                      Customs Clearance
-                                    </SelectItem>
-                                    <SelectItem value="freight-forwarding">
-                                      Freight Forwarding
+                                    <SelectItem value="GeneralEnquiry">
+                                      General Enquiry
                                     </SelectItem>
                                   </SelectContent>
                                 </Select>
@@ -301,7 +315,7 @@ const QuoteForm = ({ trigger }: QuoteFormProps) => {
                       <div className="pt-4 border-t">
                         <FormField
                           control={form.control}
-                          name="requestQoute"
+                          name="body"
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>Request Details</FormLabel>

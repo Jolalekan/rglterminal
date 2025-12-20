@@ -8,12 +8,17 @@ const menu =[
     {
         icon: "/dashboard.png",
         label: "Dashboard",
-        href: "/",  
+        href: "/dashboard",  
     },
     {
         icon: "/message.png",
-        label: "Messages",
-        href: "/messages",  
+        label: "Quote Request",
+        href: "/quote-request",  
+    },
+    {
+        icon: "/contacts.png",
+        label: "Contacts",
+        href: "/contacts",  
     },
     {
         icon: "/settings.png",
@@ -29,10 +34,10 @@ const Menu =()=>{
             {menu.map((item)=>{
                const isActive = pathname === item.href;
                return(
-                <div  className="flex flex-col gap-2" key={item.label}>
+                <div  className="flex flex-col py-0.5" key={item.label}>
                     <Link 
                         href={item.href}
-                    className={`flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-blue-100
+                    className={`flex items-center justify-center lg:justify-start gap-x-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-blue-100
                         ${isActive ? "bg-blue-100 text-blue-600 font-medium" : "text-gray-500 hover:bg-blue-100"}`}
                     >
 
