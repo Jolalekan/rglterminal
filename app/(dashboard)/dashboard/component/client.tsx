@@ -7,7 +7,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Plus } from "lucide-react";
 import {  useRouter } from "next/navigation";
 import { useState } from "react";
-import { QuoteRequestColumn, column } from "./colum";
+import { DashboardColumn, column } from "./colum";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {  getTotalQuotes } from "@/action/get-quote";
 import { getTotalContacts } from "@/action/get-total-contact";
@@ -21,7 +21,7 @@ interface Status{
 }
 
 interface DashboardClientProps {
-  data: QuoteRequestColumn[];
+  data: DashboardColumn[];
   stats:Status
 }
 export const DashboardClient: React.FC<DashboardClientProps> = ({ 

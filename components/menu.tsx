@@ -46,6 +46,7 @@ const Menu =()=>{
                     alt={item.label} 
                     width={24} 
                     height={24} 
+                    className="hidden md:block"
                     />
                     <span>
                         {item.label}

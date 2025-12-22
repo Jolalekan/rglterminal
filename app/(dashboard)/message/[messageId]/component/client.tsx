@@ -1,7 +1,7 @@
 "use client";
 
-import AllMessages from "@/components/all-messages";
-import DisplayMessages from "@/components/display-messages";
+import AllMessages from "@/components/all-quotes";
+import DisplayMessages from "@/components/display-quotes";
 import PersonalInfo from "@/components/personal-info";
 import { Input } from "@/components/ui/input";
 import { Message } from "@/type";

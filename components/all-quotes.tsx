@@ -2,37 +2,40 @@ import { truncateText } from "@/lib/truncate";
 import { QuoteRequest } from "@/type";
 import { format } from "date-fns";
 
-interface AllMessagesProps {
-  messages: QuoteRequest[];
+interface AllQuotesResquestProps {
+  quotesRequest: QuoteRequest[];
   onSelect: (message: QuoteRequest) => void;
 }
 
-const AllMessages: React.FC<AllMessagesProps> = ({ messages, onSelect }) => {
+const AllQuotesResquest: React.FC<AllQuotesResquestProps> = ({ quotesRequest, onSelect }) => {
 
   return (
     <div className=" bg-white w-full">
       <div >
         <div className="space-y-2">   
-          {messages.map((message) => (
+          {quotesRequest.map((quoteRequest) => (
             <div 
-              key={message.id}
+              key={quoteRequest.id}
               className="border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition"
-              onClick={() => onSelect(message)}
+              onClick={() => onSelect(quoteRequest)}
             >
               {/* Top Row */}
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium">
-                  {message.fullName}
+                  {quoteRequest.fullName}
+                  {quoteRequest.status === "New" && (
+              <span className="w-2 h-2 bg-blue-600 rounded-full" />
+            )}
                 </span>
 
                 <span className="text-xs text-gray-400">
-                  {format(message.createdAt, "PPP")}
+                  {format(quoteRequest.createdAt, "PPP")}
                 </span>
               </div>
 
               {/* Preview */}
               <span className="text-xs text-gray-600 block mt-1">
-                {truncateText(message.body, 40)}
+                {truncateText(quoteRequest.body, 40)}
               </span>
             </div>
           ))}
@@ -42,4 +45,4 @@ const AllMessages: React.FC<AllMessagesProps> = ({ messages, onSelect }) => {
   );
 };
 
-export default AllMessages;
+export default AllQuotesResquest;

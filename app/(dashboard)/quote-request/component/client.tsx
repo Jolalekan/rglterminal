@@ -1,8 +1,8 @@
 "use client";
 
-import AllMessages from "@/components/all-messages";
-import DisplayMessages from "@/components/display-messages";
-import PersonalInfo from "@/components/personal-info";
+import { markQuoteAsRead } from "@/action/mark-quote-as-read";
+import AllQuotesResquest from "@/components/all-quotes";
+import DisplayQuote from "@/components/display-quotes";
 import { Input } from "@/components/ui/input";
 import { QuoteRequest } from "@/type";
 import { MessageSquare } from "lucide-react";
@@ -19,14 +19,17 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
   const router = useRouter();
   const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
-  // const [selected, setSelected] = useState<Message | null>(null);
 
     const selectedId = searchParams.get("id");
   const selected = useMemo(() => quotesRequest.find((quote) => quote.id === selectedId) || null,
     [selectedId, quotesRequest]
   );
 
-  const handleSelect = (quote: QuoteRequest) => {
+  const handleSelect = async(quote: QuoteRequest) => {
+
+    if(quote.status === "New"){
+      await markQuoteAsRead(quote.id)
+    }
     router.push(`?id=${quote.id}`, { scroll: false });
   };
     return (
@@ -35,7 +38,7 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
           <MessageSquare className="w- h-4 text-green-600" />
-          Messages
+          Quotes Request
         </h2>
       {/* Search */}
       
@@ -51,15 +54,15 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
       <section className="grid grid-cols-1 md:grid-cols-12 gap-2">
         {/* Message List */}
         <div className="md:col-span-3">
-          <AllMessages
-            messages={quotesRequest}
+          <AllQuotesResquest
+            quotesRequest={quotesRequest}
             onSelect={handleSelect}
           />
         </div>
 
         {/* Message Body */}
         <div className="md:col-span-6">
-          <DisplayMessages 
+          <DisplayQuote 
             data={selected} 
             />
         </div>

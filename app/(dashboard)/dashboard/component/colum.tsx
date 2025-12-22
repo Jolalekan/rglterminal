@@ -2,7 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-export type QuoteRequestColumn={
+export type DashboardColumn={
     id:string;
     fullName:string;
     email:string;
@@ -11,7 +11,7 @@ export type QuoteRequestColumn={
     createdAt: string;
 }
 
-export const column:ColumnDef<QuoteRequestColumn>[]=[
+export const column:ColumnDef<DashboardColumn>[]=[
     {
         accessorKey:"fullName",
         header:"Name"

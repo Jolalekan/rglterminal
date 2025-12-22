@@ -27,7 +27,12 @@ export async function POST(req: Request) {
     if (!conversation) {
       const slug = generateSlug(fullName, email, serviceType);
       conversation = await prismadb.conversation.create({
-        data: { slug },
+        data: { 
+          slug, 
+          email, 
+          name: 
+          fullName 
+        },
       });
     }
 

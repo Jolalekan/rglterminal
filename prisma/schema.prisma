@@ -12,7 +12,6 @@ model Admin {
   email      String        @unique
   password   String
 
-  // Admin replies
   quoteRequests   QuoteRequest[]  @relation("AdminQuoteRequests")
   contactReplies  Contact[]       @relation("AdminContactReplies")
 
@@ -20,76 +19,98 @@ model Admin {
   updatedAt  DateTime      @updatedAt
 }
 
-model Conversation {
-  id         String        @id @default(cuid())
-  slug       String        @unique
-
-  quoteRequests   QuoteRequest[]
-
-  createdAt  DateTime      @default(now())
-  updatedAt  DateTime      @updatedAt
-}
 
 model QuoteRequest {
   id             String       @id @default(cuid())
-
-  // Guest fields
+  
   fullName       String
   email          String
   phone          String?
   company        String?
-
-  // Logistics-specific fields
   body           String
-  serviceType    Type          @default(ShipItems)
   
+  serviceType    Type         @default(GeneralEnquiry)
+  status         Status       @default(New)
+  
+
+  conversationId String?
+  conversation   Conversation? @relation(fields: [conversationId], references: [id])
 
   palletCount    Int?
   storageDuration String?     
   specialRequirements String?   
-
-  // Admin reply fields
-  senderId       String?      
-  sender         Admin?        @relation("AdminQuoteRequests", fields: [senderId], references: [id])
+  
+  senderId       String?
+  sender         Admin?       @relation("AdminQuoteRequests", fields: [senderId], references: [id])
   adminNotes     String?       // Internal notes
   quotedAmount   Decimal?      @db.Decimal(10, 2)
-
-  // Conversation link
-  conversationId String
-  conversation   Conversation  @relation(fields: [conversationId], references: [id])
-
-  status         Status        @default(New)
-
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
-  respondedAt    DateTime?     // Track when admin responded
+  // Link to conversation
+  
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  respondedAt    DateTime?
 }
 
 model Contact {
   id             String       @id @default(cuid())
   firstName      String
   surname        String
-  email          String       // ADDED - Critical!
+  email          String
   phone          String
-  message        String       @db.Text 
-
-  // Admin response tracking
-  senderId       String?      
-  sender         Admin?        @relation("AdminContactReplies", fields: [senderId], references: [id])
-  adminNotes     String?       @db.Text
-
+  message        String       @db.Text
   status         Status       @default(New)
-
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  
+  // Link to conversation
+  conversationId String?
+  conversation   Conversation? @relation(fields: [conversationId], references: [id])
+  
+  senderId       String?
+  sender         Admin?       @relation("AdminContactReplies", fields: [senderId], references: [id])
+  
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
   respondedAt    DateTime?
+}
+
+model Conversation {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String
+  slug          String        @unique
+  
+  // Relations
+  messages      Message[]
+  quoteRequests QuoteRequest[]  // Link quote requests
+  contacts      Contact[]       // Link contacts
+  
+  lastMessageAt DateTime       @default(now())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+  direction      Direction
+  from           String
+  to             String
+  subject        String
+  body           String       @db.Text
+  
+  createdAt      DateTime     @default(now())
+}
+
+enum Direction {
+  inbound
+  outbound
 }
 
 enum Status {
   New
   Read
   Responded
-  Closed      
 }
 
 enum Type {
@@ -98,27 +119,20 @@ enum Type {
   BondedWarehousing
   ContainerStorage
   MaritimeShipping
-  Groupage      
-  GeneralEnquiry  
+  Groupage
+  GeneralEnquiry
   Haulage
 }
 
-// generator client {
-//   provider = "prisma-client-js"
-// }
 
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
 
 // model Admin {
 //   id         String        @id @default(cuid())
 //   email      String        @unique
 //   password   String
 
-//   // Admin replies to messages
-//   quotesRequests   QuoteRequest[]     @relation("AdminQuoteRequests")
+//   // Admin replies
+//   quoteRequests   QuoteRequest[]  @relation("AdminQuoteRequests")
 //   contactReplies  Contact[]       @relation("AdminContactReplies")
 
 //   createdAt  DateTime      @default(now())
@@ -144,12 +158,14 @@ enum Type {
 //   phone          String?
 //   company        String?
 
+//   // Logistics-specific fields
 //   body           String
 //   serviceType    Type          @default(ShipItems)
+  
 
 //   palletCount    Int?
 //   storageDuration String?     
-//   specialRequirements String?
+//   specialRequirements String?   
 
 //   // Admin reply fields
 //   senderId       String?      
@@ -165,14 +181,14 @@ enum Type {
 
 //   createdAt      DateTime      @default(now())
 //   updatedAt      DateTime      @updatedAt
-//   respondedAt    DateTime?     
+//   respondedAt    DateTime?     // Track when admin responded
 // }
 
 // model Contact {
 //   id             String       @id @default(cuid())
 //   firstName      String
 //   surname        String
-//   email          String       
+//   email          String       // ADDED - Critical!
 //   phone          String
 //   message        String       @db.Text 
 
@@ -188,11 +204,11 @@ enum Type {
 //   respondedAt    DateTime?
 // }
 
-
 // enum Status {
 //   New
 //   Read
 //   Responded
+//   Closed      
 // }
 
 // enum Type {
@@ -201,7 +217,7 @@ enum Type {
 //   BondedWarehousing
 //   ContainerStorage
 //   MaritimeShipping
-//   Groupage
-//   GeneralEnquiry
+//   Groupage      
+//   GeneralEnquiry  
 //   Haulage
 // }

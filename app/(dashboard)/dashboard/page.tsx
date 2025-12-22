@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import prismadb from "@/lib/prismadb";
-import { DashboardClient } from "../component/client";
-import {  QuoteRequestColumn } from "../component/colum";
+import { DashboardClient } from "./component/client";
+import {  DashboardColumn } from "./component/colum";
 import { getQuoteStatusCounts } from "@/action/quote-action";
 
 export default async function DashboardPage() {
@@ -12,7 +12,7 @@ export default async function DashboardPage() {
         }
     })
 
-    const formattedRequest:QuoteRequestColumn[] = quoteRequest.map((item=>({
+    const formattedRequest:DashboardColumn[] = quoteRequest.map((item=>({
         id: item.id,
         fullName: item.fullName,
         email:item.email,
