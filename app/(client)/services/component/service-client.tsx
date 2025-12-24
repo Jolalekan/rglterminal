@@ -15,7 +15,7 @@ const ServicesClient = () => {
       href: "/warehousing",
       title: "Bonded Warehousing",
       description: "Secure and efficient storage solutions for your imported goods with full customs compliance.",
-      icon: Warehouse,
+  
       color: "yellow"
     },
     {
@@ -23,7 +23,7 @@ const ServicesClient = () => {
       href: "/storage",
       title: "Container Storage",
       description: "Flexible container storage options tailored to your needs with 24/7 security monitoring.",
-      icon: Container,
+
       color: "blue"
     },
     {
@@ -31,7 +31,7 @@ const ServicesClient = () => {
       href: "/maritime-shipping",
       title: "Shipping",
       description: "Efficient water transport solutions connecting major ports and inland waterways.",
-      icon: Ship,
+
       color: "green"
     },
     {
@@ -39,7 +39,7 @@ const ServicesClient = () => {
       href: "/bonded-terminal",
       title: "Bonded Terminal",
       description: "Specialized handling for bulk commodities with state-of-the-art equipment and expertise.",
-      icon: Package,
+
       color: "purple"
     },
   ]
@@ -215,10 +215,7 @@ const ServicesClient = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         
-                        {/* Icon Badge */}
-                        <div className={`absolute top-6 left-6 w-14 h-14 ${colorClasses.badge} rounded-xl flex items-center justify-center shadow-lg`}>
-                          <service.icon className="w-7 h-7 text-white" />
-                        </div>
+                  
                       </div>
 
                      

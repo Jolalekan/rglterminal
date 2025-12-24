@@ -59,7 +59,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-gray-300 border-t border-gray-800">
-      <Container>
+      <Container >
+        <section className="px-4 lg:px-0">
         {/* Main Footer Content */}
         <motion.div 
           variants={containerVariants}
@@ -72,19 +73,20 @@ const Footer = () => {
             
             {/* Company Info */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <Image
-                  src="/logo1.png"
-                  alt="logo"
-                  width={60}
-                  height={60}
-                  className=""
-                />
-              </Link>
-              <h3 className="font-bold text-white text-lg">
-                ROLLING GRAZING<br />
-                <span className="text-yellow-500">Bonded Terminal</span>
-              </h3>
+              <Link href="/" className='flex items-center gap-2'>
+                          <Image
+                            src="/logo1.png"
+                            alt='logo'
+                            height={60}
+                            width={60}
+                          />
+                        <span className="font-bold text-yellow-600 text-lg leading-tight tracking-tight"> 
+                          ROLLING GRAZING <br/>
+                          BONDED <br/> 
+                          TERMINAL
+                        </span>
+                      
+                        </Link>
               
               <div className="space-y-3 text-sm">
                 <div className="flex items-start space-x-3">
@@ -301,6 +303,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        </section>
       </Container>
     </footer>
   );

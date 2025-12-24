@@ -11,9 +11,9 @@ const Welcome = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Side */}
           <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
             className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
@@ -27,8 +27,8 @@ const Welcome = () => {
 
           {/* Content Side */}
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             // viewport={{ once: true }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{duration:0.8, type: "spring", stiffness: 80, damping: 15 }}

@@ -2,53 +2,12 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Package, Shield, Clock, Lock, FileText, CirclePlus } from 'lucide-react'
+import {  CirclePlus } from 'lucide-react'
 import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Bonded Warehousing - Secure Storage with Customs Compliance',
-  description: 'Professional bonded warehousing services in Lagos. Secure storage, customs compliance, duty deferment, and 24/7 monitoring for your imported goods.',
-  keywords: [
-    'bonded warehouse Lagos',
-    'customs bonded storage',
-    'duty deferment Nigeria',
-    'secure warehousing',
-    'import storage solutions'
-  ],
-  openGraph: {
-    title: 'Bonded Warehousing Services - RGL Terminal',
-    description: 'Secure bonded warehousing with full customs compliance',
-    url: 'https://rglterminal.com/warehousing',
-    images: ['/og-warehousing.jpg'],
-  },
-  alternates: {
-    canonical: 'https://rglterminal.com/warehousing',
-  },
-}
+import { useQuote } from '@/app/provider/quote-provider';
 
 const WarehousingClient = () => {
-  const features = [
-    {
-      icon: Shield,
-      title: "Customs Compliance",
-      description: "Full compliance with all customs regulations and requirements"
-    },
-    {
-      icon: Lock,
-      title: "Secure Storage",
-      description: "24/7 security monitoring and access control systems"
-    },
-    {
-      icon: Clock,
-      title: "Flexible Terms",
-      description: "Short or long-term storage options to suit your needs"
-    },
-    {
-      icon: FileText,
-      title: "Inventory Management",
-      description: "Real-time tracking and detailed reporting systems"
-    }
-  ]
+const { openQuote } = useQuote();
 
   const benefits = [
     "Duty deferment until goods are released",
@@ -166,6 +125,7 @@ const WarehousingClient = () => {
               </div>
 
               <motion.button
+                onClick={openQuote}
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

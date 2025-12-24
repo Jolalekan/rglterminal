@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const HomePage
  = () => {
   return (
-    <div>
+    <section>
         <Hero/>
         <Welcome/>
         <ChooseUs/>
@@ -31,7 +31,7 @@ const HomePage
         <Monitor/>
         <Frequently/>
         <NeedUs/>
-    </div>
+    </section>
   )
 }
 

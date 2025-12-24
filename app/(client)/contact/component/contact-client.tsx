@@ -7,11 +7,11 @@ import dynamic from 'next/dynamic'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Get in Touch for Logistics Solutions',
-  description: 'Contact Rolling Grazing Bonded Terminal in Victoria Island, Lagos. Call +234 906 600 5911, +234 802 099 2018 or email info@rglterminal.com. Available 24/7 for your logistics needs.',
+  description: 'Contact Rolling Grazing Bonded Terminal in Badagry terminal, Lagos. Call +234 906 600 5911, +234 802 099 2018 or email info@rglterminal.com. Available 24/7 for your logistics needs.',
   keywords: [
     'contact RGL Terminal',
     'logistics company contact Lagos',
-    'bonded terminal Victoria Island',
+    'bonded terminal Badagry Island',
     'shipping inquiry Nigeria'
   ],
   openGraph: {
@@ -100,7 +100,12 @@ const ContactClient = () => {
                   <MapPin className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
-                    <p className="text-gray-700">12, Olorunsogo street, Victoria Island, Lagos, Nigeria</p>
+                    <span>
+                    klm 26, Opp. Foreign Affair Academy,<br />
+                    Lagos/ Badagry Expressway,<br />
+                    Ayetoro/ Ijanikin,<br />
+                    Lagos State, Nigeria
+                  </span>
                   </div>
                 </div>
 
@@ -131,7 +136,7 @@ const ContactClient = () => {
 
               <div className="flex gap-4">
                 <motion.a
-                  href="https://maps.google.com/?q=12+Olorunsogo+street+Victoria+Island+Lagos"
+                  href="https://www.google.com/maps/search/?api=1&query=KLM+26,+Opp.+Foreign+Affair+Academy,+Lagos+Badagry+Expressway,+Ayetoro,+Ijanikin,+Lagos+State,+Nigeria"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

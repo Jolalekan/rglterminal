@@ -59,7 +59,7 @@ const ChooseUs = () => {
   return (
     <section className="bg-gradient-to-b from-white via-yellow-50 to-gray-50 py-20 scroll-mt-24">
       <Container>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 lg:px-0">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

@@ -18,7 +18,8 @@ const icon = L.icon({
 
 const LocationMap = () => {
   // Your business location - Victoria Island, Lagos
-  const position: [number, number] = [6.4281, 3.4219]; // Replace with your exact coordinates
+  const position: [number, number] = [6.4708, 3.1479]; // Replace with your exact coordinates
+  // const position: [number, number] = [6.4281, 3.4219]; // Replace with your exact coordinates
 
   useEffect(() => {
     // Fix for marker icon in production

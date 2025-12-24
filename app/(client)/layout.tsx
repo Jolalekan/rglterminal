@@ -1,7 +1,6 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import Image from "next/image";
-import Link from "next/link";
+import QuoteProvider from "../provider/quote-provider";
 
 
 export default async function DashboardLayout({
@@ -12,10 +11,12 @@ export default async function DashboardLayout({
 
 
   return (
-    <>
-        <Navbar/>
+       <>
+      <QuoteProvider>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
+      </QuoteProvider>
     </>
   );
 }

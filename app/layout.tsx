@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "warehousing services",
     "freight forwarding",
     "customs clearance",
-    "Victoria Island terminal",
+    "Badagry terminal",
     "cargo handling Nigeria",
     "shipping solutions"
   ],
@@ -100,9 +100,9 @@ export default function RootLayout({
     email: "info@rglterminal.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "12, Olorunsogo street",
-      addressLocality: "Victoria Island",
-      addressRegion: "Lagos",
+      streetAddress: "klm 26, Opp. Foreign Affair Academy, Lagos/ Badagry Expressway,",
+      addressLocality: "Ayetoro/ Ijanikin",
+      addressRegion: "Lagos State, Nigeria",
       addressCountry: "NG",
     },
     sameAs: [

@@ -7,23 +7,16 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import dynamic from "next/dynamic";
+import { useQuote } from "@/app/provider/quote-provider";
 
-// Dynamically import QuoteForm with no SSR
-const QuoteForm = dynamic(() => import("./quote-form"), {
-  ssr: false,
-  loading: () => (
-    <button className="px-4 py-2 rounded-md transition font-medium bg-yellow-600 text-white">
-      Request a Quote
-    </button>
-  ),
-});
+
 
 const Frequently = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [clientCount, setClientCount] = useState(0);
 
+
+  const [clientCount, setClientCount] = useState(0);
+  const { openQuote } = useQuote();
   // Animate counter from 19950 to 20000
   useEffect(() => {
     const controls = animate(19950, 20000, {
@@ -98,53 +91,52 @@ const Frequently = () => {
               Quick answers to questions you may have. Can&apos;t find what
               you&apos;re looking for? Our support team is here to help.
             </p>
-<QuoteForm
-  trigger={
-    <motion.button
-      initial="initial"
-      whileHover="hover"
-      whileTap={{ scale: 0.95 }}
-      className="
-        relative px-8 py-4 rounded-lg font-semibold
-        overflow-hidden inline-flex items-center gap-3
-        bg-yellow-600 text-white
-        shadow-lg hover:shadow-xl
-        cursor-pointer
-      "
-    >
-      {/* Sliding background overlay */}
-      <motion.span
-        aria-hidden
-        className="absolute inset-0 bg-yellow-700"
-        variants={{
-          initial: { x: '-100%' },
-          hover: { x: 0 }
-        }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
-      />
+<motion.button
+  type="button"
+  onClick={openQuote}
+  initial="initial"
+  whileHover="hover"
+  whileTap={{ scale: 0.95 }}
+  className="
+    relative px-8 py-4 rounded-lg font-semibold
+    overflow-hidden inline-flex items-center gap-3
+    bg-yellow-600 text-white
+    shadow-lg hover:shadow-xl
+    cursor-pointer
+  "
+>
+  {/* Sliding background overlay */}
+  <motion.span
+    aria-hidden
+    className="absolute inset-0 bg-yellow-700"
+    variants={{
+      initial: { x: "-100%" },
+      hover: { x: 0 },
+    }}
+    transition={{ duration: 0.3, ease: "easeOut" }}
+  />
 
-      {/* Icon */}
-      <Mail size={20} className="relative z-10" />
+  {/* Icon */}
+  <Mail size={20} className="relative z-10" />
 
-      {/* Text */}
-      <span className="relative z-10 whitespace-nowrap">
-        Request a Quote
-      </span>
+  {/* Text */}
+  <span className="relative z-10 whitespace-nowrap">
+    Request a Quote
+  </span>
 
-      {/* Arrow appears on hover */}
-      <motion.span
-        className="relative z-10 flex items-center"
-        variants={{
-          initial: { opacity: 0, x: -8 },
-          hover: { opacity: 1, x: 0 }
-        }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
-      >
-        <ArrowRight className="w-5 h-5" />
-      </motion.span>
-    </motion.button>
-  }
-/>
+  {/* Arrow appears on hover */}
+  <motion.span
+    className="relative z-10 flex items-center"
+    variants={{
+      initial: { opacity: 0, x: -8 },
+      hover: { opacity: 1, x: 0 },
+    }}
+    transition={{ duration: 0.25, ease: "easeOut" }}
+  >
+    <ArrowRight className="w-5 h-5" />
+  </motion.span>
+</motion.button>
+
 
 
 
