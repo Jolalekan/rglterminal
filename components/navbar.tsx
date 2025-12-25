@@ -60,7 +60,7 @@ const Navbar = () => {
               height={60}
               width={60}
             />
-          <span className="font-bold text-yellow-600 text-lg leading-tight tracking-tight"> 
+          <span className="font-bold text-yellow-600 text-sm md:text-lg leading-tight tracking-tight"> 
             ROLLING GRAZING <br/>
             BONDED <br/> 
             TERMINAL
@@ -175,8 +175,8 @@ const Navbar = () => {
                 <Link 
                   href="/" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-medium transition ${
-                    isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200'
+                  className={`text-center block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-600' : 'text-white hover:text-gray-200'
                   }`}
                 >
                   Home
@@ -186,8 +186,8 @@ const Navbar = () => {
                 <Link 
                   href="/about" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-medium transition ${
-                    isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200'
+                  className={`text-center  block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-600' : 'text-white hover:text-gray-200'
                   }`}
                 >
                   About Us
@@ -197,8 +197,8 @@ const Navbar = () => {
                 <Link 
                   href="/contact" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-medium transition ${
-                    isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200'
+                  className={`text-center block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-600' : 'text-white hover:text-gray-200'
                   }`}
                 >
                   Contact 
@@ -208,8 +208,8 @@ const Navbar = () => {
                 <Link 
                   href="/careers" 
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block font-medium transition ${
-                    isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200'
+                  className={`text-center block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-90 hover:bg-gray-6000' : 'text-white hover:text-gray-200'
                   }`}
                 >
                   Careers 
@@ -222,7 +222,7 @@ const Navbar = () => {
                       openQuote();
                       setIsMobileMenuOpen(false)
                     }}
-                    className={`relative px-4 py-2 rounded-md font-medium overflow-hidden inline-flex items-center gap-2 ${
+                    className={`w-full relative px-4 py-2 rounded-md font-medium overflow-hidden inline-flex items-center justify-center gap-2 ${
                       isScrolled 
                         ? 'bg-yellow-600 text-white' 
                         : 'bg-white text-gray-900'
@@ -243,11 +243,11 @@ const Navbar = () => {
                     />
                     
                     {/* Text content */}
-                    <span className="relative z-10">Request a Quote</span>
+                    <span className="relative z-10 text-center">Request a Quote</span>
                     
                     {/* Arrow that appears on hover */}
                     <motion.div
-                      className="relative z-10 flex items-center"
+                      className="absolute right z-10 flex items-center"
                       variants={{
                         initial: { opacity: 0, x: -8 },
                         hover: { opacity: 1, x: 0 }

@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Get from Google Search Console
+    google: "your-google-verification-code", 
     // yandex: "your-yandex-verification-code",
     // bing: "your-bing-verification-code",
   },
@@ -120,6 +120,7 @@ export default function RootLayout({
   return (
     <html lang="en">
        <head>
+        <link rel="icon" href="logo1.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
