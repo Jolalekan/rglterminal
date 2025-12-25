@@ -3,10 +3,11 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { CirclePlus, Mail, ArrowRight } from 'lucide-react'
-import QuoteForm from '@/components/quote-form';
+import { useQuote } from '@/app/provider/quote-provider';
 
 
 const StorageClient = () => {
+    const { openQuote } = useQuote();
   const benefits = [
     "Protected from weather and environmental damage",
     "Real-time inventory tracking and monitoring",
@@ -107,19 +108,9 @@ const StorageClient = () => {
                 ))}
               </div>
 
-              {/* <motion.button
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl mt-8"
-              >
-                Get Storage Quote
-              </motion.button> */}
-
-
-              <QuoteForm
-                trigger={
+             
                   <motion.button
+                    onClick={openQuote}
                     initial="initial"
                     whileHover="hover"
                     whileTap={{ scale: 0.95 }}
@@ -162,8 +153,6 @@ const StorageClient = () => {
                       <ArrowRight className="w-5 h-5" />
                     </motion.span>
                   </motion.button>
-                }
-              />
             </motion.div>
 
             {/* Image */}
