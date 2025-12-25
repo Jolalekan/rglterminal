@@ -20,11 +20,7 @@ const menu =[
         label: "Contacts",
         href: "/contacts",  
     },
-    {
-        icon: "/settings.png",
-        label: "Settings",
-        href: "/settings",  
-    },
+
 ]
 
 const Menu =()=>{
