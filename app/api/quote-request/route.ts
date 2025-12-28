@@ -5,6 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const data = await req.json();
+    console.log("data", data)
     const { fullName, email, phone, company, body, serviceType } = data;
 
     if (!email || !body) {
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
         },
       },
     });
-
+ 
     // Step 2 — Create conversation if none exists
     if (!conversation) {
       const slug = generateSlug(fullName, email, serviceType);
@@ -30,8 +31,7 @@ export async function POST(req: Request) {
         data: { 
           slug, 
           email, 
-          name: 
-          fullName 
+          name:fullName,
         },
       });
     }

@@ -93,19 +93,35 @@ model Message {
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   
-  direction      Direction
+  direction      String       // "inbound" or "outbound"
   from           String
   to             String
-  subject        String
+  subject        String?
   body           String       @db.Text
+  htmlBody       String?      @db.Text
+  emailId        String?
+  
+  isRead         Boolean      @default(false) // Add this!
   
   createdAt      DateTime     @default(now())
+  
+  @@index([conversationId])
+  @@index([direction, isRead]) // Index for faster queries
 }
 
-enum Direction {
-  inbound
-  outbound
-}
+// model Message {
+//   id             String       @id @default(cuid())
+//   conversationId String
+//   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  
+//   direction      Direction
+//   from           String
+//   to             String
+//   subject        String
+//   body           String       @db.Text
+  
+//   createdAt      DateTime     @default(now())
+// }
 
 enum Status {
   New

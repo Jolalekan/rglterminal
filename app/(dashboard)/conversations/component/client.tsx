@@ -33,7 +33,7 @@ export function ConversationsClient({ conversations }: ConversationsClientProps)
   );
 
   const handleConversationClick = (id: string) => {
-    router.push(`/dashboard/conversations/${id}`);
+    router.push(`/conversations/${id}`);
   };
 
   return (

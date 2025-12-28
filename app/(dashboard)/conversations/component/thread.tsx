@@ -5,7 +5,7 @@ import { Conversation, Message } from "@prisma/client";
 import { Send } from "lucide-react";
 
 type ConversationWithMessages = Conversation & {
-  messages: Message[];
+  messages: Message[]; 
 };
 
 export function ConversationThread({ 
