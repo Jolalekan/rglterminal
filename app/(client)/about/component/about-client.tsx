@@ -256,28 +256,6 @@ const AboutClient = () => {
                         ))}
                       </motion.div>
 
-          {/* <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
-          >
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all group"
-              >
-                <div className="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-yellow-600 transition-colors">
-                  <value.icon className="w-8 h-8 text-yellow-600 group-hover:text-white transition-colors" />
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </motion.div> */}
         </div>
       </section>
 

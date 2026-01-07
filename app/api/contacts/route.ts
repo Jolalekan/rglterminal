@@ -1,9 +1,11 @@
 import prismadb from "@/lib/prismadb";
 import { NextResponse } from "next/server";
+import { generateSlug } from "@/lib/slug";
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
+    console.log("data received", data)
     const { firstName, surname, email, phone, message } = data;
 
     if (!email || !message) {
@@ -13,7 +15,24 @@ export async function POST(req: Request) {
       );
     }
 
+    let conversation = await prismadb.conversation.findFirst({
+      where: {
+        contacts: {
+          some: { email: email },
+        },
+      },
+    });
 
+    if (!conversation) {
+      const slug = generateSlug(firstName, email, "contact");
+      conversation = await prismadb.conversation.create({
+        data: { 
+          slug, 
+          email, 
+          name:firstName,
+        },
+      });
+    }
     // Step 3 — Save the message into conversation
     const contact = await prismadb.contact.create({
       data: {
@@ -22,6 +41,7 @@ export async function POST(req: Request) {
         email,
         phone,
         message,
+        conversationId: conversation.id,
       },
     });
 

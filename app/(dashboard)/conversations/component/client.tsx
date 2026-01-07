@@ -21,6 +21,7 @@ interface ConversationsClientProps {
 }
 
 export function ConversationsClient({ conversations }: ConversationsClientProps) {
+  console.log("conversation details", conversations)
   const router = useRouter();
   const [search, setSearch] = useState("");
 

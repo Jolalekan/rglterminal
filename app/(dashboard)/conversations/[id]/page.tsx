@@ -16,6 +16,12 @@ export default async function ConversationPage({
       messages: {
         orderBy: { createdAt: "asc" },
       },
+      quoteRequests:{
+        orderBy:{createdAt:"asc"},
+      },
+      contacts:{
+        orderBy:{createdAt:"asc"}
+      }
     },
   });
 

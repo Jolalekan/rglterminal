@@ -1,7 +1,7 @@
 "use client";
 
 import { markQuoteAsRead } from "@/action/mark-quote-as-read";
-import AllQuotesResquest from "@/components/all-quotes";
+import AllQuotesRequest from "@/components/all-quotes";
 import DisplayQuote from "@/components/display-quotes";
 import { Input } from "@/components/ui/input";
 import { QuoteRequest } from "@/type";
@@ -54,14 +54,14 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
       <section className="grid grid-cols-1 md:grid-cols-12 gap-2">
         {/* Message List */}
         <div className="md:col-span-3">
-          <AllQuotesResquest
+          <AllQuotesRequest
             quotesRequest={quotesRequest}
             onSelect={handleSelect}
           />
         </div>
 
         {/* Message Body */}
-        <div className="md:col-span-6">
+        <div className="md:col-span-8">
           <DisplayQuote 
             data={selected} 
             />

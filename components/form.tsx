@@ -21,7 +21,6 @@ import { Textarea } from "@/components/ui/textarea"
 import toast from "react-hot-toast"
 import axios from "axios"
 
-
 // Form validation schema
 const formSchema = z.object({
   firstName: z.string().min(2, {

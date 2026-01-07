@@ -16,6 +16,11 @@ const menu =[
         href: "/quote-request",  
     },
     {
+        icon: "/message.png",
+        label: "Conversations",
+        href: "/conversations",  
+    },
+    {
         icon: "/contacts.png",
         label: "Contacts",
         href: "/contacts",  

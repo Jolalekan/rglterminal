@@ -2,11 +2,18 @@ import prismadb from "@/lib/prismadb";
 import { ContactClient } from "./component/client";
 
 
-export default async function Contact() {
-  // const messages = await prismadb.message.findMany();
-
-
+export default async function Contacts() {
+ 
     const contacts = await prismadb.contact.findMany({
+      include:{
+        conversation:{
+          include:{
+            messages:{
+               orderBy:{ createdAt:"asc"},
+            }
+          }
+        },
+      },
     orderBy:{
       createdAt:"desc"
     }

@@ -2,12 +2,12 @@ import { truncateText } from "@/lib/truncate";
 import { QuoteRequest } from "@/type";
 import { format } from "date-fns";
 
-interface AllQuotesResquestProps {
+interface AllQuotesRequestProps {
   quotesRequest: QuoteRequest[];
   onSelect: (message: QuoteRequest) => void;
 }
 
-const AllQuotesResquest: React.FC<AllQuotesResquestProps> = ({ quotesRequest, onSelect }) => {
+const AllQuotesRequest: React.FC<AllQuotesRequestProps> = ({ quotesRequest, onSelect }) => {
 
   return (
     <div className=" bg-white w-full">
@@ -45,4 +45,4 @@ const AllQuotesResquest: React.FC<AllQuotesResquestProps> = ({ quotesRequest, on
   );
 };
 
-export default AllQuotesResquest;
+export default AllQuotesRequest;
