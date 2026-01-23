@@ -56,7 +56,7 @@ export const ContactClient:React.FC<ContactClientProps> =({
       {/* Main Layout */}
       <section className="grid grid-cols-1 md:grid-cols-12 gap-2">
         {/* Message List - Hide on mobile when message is selected */}
-        <div className={`md:col-span-3 ${selected ? 'hidden md:block' : 'block'}`}>
+        <div className={`overflow-y-auto md:col-span-3 ${selected ? 'hidden md:block' : 'block'}`}>
           <AllContacts
             data={contactRequest}
             onSelect={handleSelect}

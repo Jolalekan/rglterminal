@@ -5,6 +5,7 @@ import Monitor from '@/components/monitor'
 import NeedUs from '@/components/need-us'
 import Seamless from '@/components/seamless'
 import Shipping from '@/components/shipping'
+import Testimonial from '@/components/testmonials'
 import Welcome from '@/components/welcome'
 import { Metadata } from 'next'
 
@@ -29,6 +30,7 @@ const HomePage
         <Shipping/>
         <Seamless/>
         <Monitor/>
+        <Testimonial/>
         <Frequently/>
         <NeedUs/>
     </section>

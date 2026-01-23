@@ -44,15 +44,7 @@ export default async function DashboardLayout({
       </aside>
 
       {/* Main content */}
-      <main
-        className="
-          ml-56 lg:ml-64 xl:ml-72
-          h-screen
-          overflow-y-auto
-          bg-gray-100
-          p-4
-        "
-      >
+     <main className="ml-56 lg:ml-64 xl:ml-72 h-screen overflow-hidden bg-gray-100">
         {children}
       </main>
     </div>

@@ -33,7 +33,7 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
     router.push(`?id=${quote.id}`, { scroll: false });
   };
     return (
-      <div className="p-6">
+      <div className="h-full p-6 overflow-hidden">
       {/* Top Section */}
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
@@ -51,17 +51,19 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
       </div>
 
       {/* Main Layout */}
-      <section className="grid grid-cols-1 md:grid-cols-12 gap-2">
+   <section className="grid grid-cols-1 md:grid-cols-12 gap-2 h-[calc(100vh-theme(spacing.24)-theme(spacing.6))]">
         {/* Message List */}
-        <div className="md:col-span-3">
-          <AllQuotesRequest
-            quotesRequest={quotesRequest}
-            onSelect={handleSelect}
-          />
-        </div>
+    <div className="md:col-span-3 h-full overflow-hidden">
+  <div className="h-full overflow-y-auto overscroll-contain">
+    <AllQuotesRequest
+      quotesRequest={quotesRequest}
+      onSelect={handleSelect}
+    />
+  </div>
+</div>
 
         {/* Message Body */}
-        <div className="md:col-span-8">
+        <div className="md:col-span-6 flex-1 h-full">
           <DisplayQuote 
             data={selected} 
             />

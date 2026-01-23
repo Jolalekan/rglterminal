@@ -109,19 +109,88 @@ model Message {
   @@index([direction, isRead]) // Index for faster queries
 }
 
-// model Message {
-//   id             String       @id @default(cuid())
-//   conversationId String
-//   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+model Shipment{
+  id                String       @id @default(cuid())
+  trackingNumber    String       @unique
+  origin            String
+  destination       String
+  destinationPhone  String
+  packageType      PackageType
+
+  receiverAddressId String
+  receiverAddress   Address      @relation(fields: [receiverAddressId], references: [id])
+
+  estimatedDelivery DateTime?
+  trackingEvents    TrackingEvent[]
+
+  status            ShipmentStatus @default(Pending)
+  currentLocation   String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model TrackingEvent {
+  id              String         @id @default(cuid())
+  shipmentId      String
+  shipment        Shipment       @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
   
-//   direction      Direction
-//   from           String
-//   to             String
-//   subject        String
-//   body           String       @db.Text
+  status          ShipmentStatus
+  location        String
+  description     String
+  notes           String?
   
-//   createdAt      DateTime     @default(now())
-// }
+  handledBy       String?
+  
+  // Proof of delivery
+  signature       String?
+  images          String[]
+  
+  timestamp       DateTime       @default(now())
+  
+  @@index([shipmentId])
+  @@index([timestamp])
+}
+
+enum PackageType {
+  Document
+  Parcel
+  Box
+  Envelope
+  Pallet
+}
+
+model Address {
+  id              String    @id @default(cuid())
+  
+  // Address Details
+  street          String
+  city            String
+  state           String
+  postalCode      String
+  country         String    @default("Nigeria")
+  
+ 
+  label           String?   // "Home", "Office", "Warehouse"
+  isDefault       Boolean   @default(false)
+  
+  // Shipments using this address
+  shipments       Shipment[]
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+  enum ShipmentStatus {
+    Pending 
+    Pickedup
+    Transit
+    Shipped
+    Delivered 
+    Failed 
+    Returned 
+    Cancelled
+    }
+
 
 enum Status {
   New
@@ -140,100 +209,3 @@ enum Type {
   Haulage
 }
 
-
-
-// model Admin {
-//   id         String        @id @default(cuid())
-//   email      String        @unique
-//   password   String
-
-//   // Admin replies
-//   quoteRequests   QuoteRequest[]  @relation("AdminQuoteRequests")
-//   contactReplies  Contact[]       @relation("AdminContactReplies")
-
-//   createdAt  DateTime      @default(now())
-//   updatedAt  DateTime      @updatedAt
-// }
-
-// model Conversation {
-//   id         String        @id @default(cuid())
-//   slug       String        @unique
-
-//   quoteRequests   QuoteRequest[]
-
-//   createdAt  DateTime      @default(now())
-//   updatedAt  DateTime      @updatedAt
-// }
-
-// model QuoteRequest {
-//   id             String       @id @default(cuid())
-
-//   // Guest fields
-//   fullName       String
-//   email          String
-//   phone          String?
-//   company        String?
-
-//   // Logistics-specific fields
-//   body           String
-//   serviceType    Type          @default(ShipItems)
-  
-
-//   palletCount    Int?
-//   storageDuration String?     
-//   specialRequirements String?   
-
-//   // Admin reply fields
-//   senderId       String?      
-//   sender         Admin?        @relation("AdminQuoteRequests", fields: [senderId], references: [id])
-//   adminNotes     String?       // Internal notes
-//   quotedAmount   Decimal?      @db.Decimal(10, 2)
-
-//   // Conversation link
-//   conversationId String
-//   conversation   Conversation  @relation(fields: [conversationId], references: [id])
-
-//   status         Status        @default(New)
-
-//   createdAt      DateTime      @default(now())
-//   updatedAt      DateTime      @updatedAt
-//   respondedAt    DateTime?     // Track when admin responded
-// }
-
-// model Contact {
-//   id             String       @id @default(cuid())
-//   firstName      String
-//   surname        String
-//   email          String       // ADDED - Critical!
-//   phone          String
-//   message        String       @db.Text 
-
-//   // Admin response tracking
-//   senderId       String?      
-//   sender         Admin?        @relation("AdminContactReplies", fields: [senderId], references: [id])
-//   adminNotes     String?       @db.Text
-
-//   status         Status       @default(New)
-
-//   createdAt      DateTime      @default(now())
-//   updatedAt      DateTime      @updatedAt
-//   respondedAt    DateTime?
-// }
-
-// enum Status {
-//   New
-//   Read
-//   Responded
-//   Closed      
-// }
-
-// enum Type {
-//   Export
-//   ShipItems
-//   BondedWarehousing
-//   ContainerStorage
-//   MaritimeShipping
-//   Groupage      
-//   GeneralEnquiry  
-//   Haulage
-// }
