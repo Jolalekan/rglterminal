@@ -21,7 +21,7 @@ export const testimonials=[
         id: 4,
         name:"Joshua Samuel",
         image:"/assets/noAvatar.png",
-        Description: "My experience with  Hercules Cyborg Tech and Integrated Service as been outstanding! Their team is friendly, approachable, and always willing to help. They delivered a top-notch solution that exceeded my expectations and provided exceptional customer service throughout the process."
+        Description: "My experience with  Rolling Grazing Terminal and Integrated Service as been outstanding! Their team is friendly, approachable, and always willing to help. They delivered a top-notch solution that exceeded my expectations and provided exceptional customer service throughout the process."
     },
 
 ]

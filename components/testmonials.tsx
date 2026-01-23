@@ -46,13 +46,13 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-purple-600 to-blue-500 py-8 w-full">
+    <div className=" py-8 w-full">
       <div className="container mx-auto px-4">
-        <h2 className="text-center text-xl font-bold text-white leading-tight mb-6">Our Reviews</h2>
+        <h2 className="text-center text-xl font-bold text-yellow-500 leading-tight mb-6">Our Reviews</h2>
         
         <div className="flex items-center justify-center relative max-w-7xl mx-auto">
           <button
-            className="hidden md:block absolute left-4 lg:left-0 bg-gray-200 hover:bg-gray-300 text-black leading-tight font-bold py-2 px-4 rounded z-10 transition-colors"
+            className="hidden md:block absolute left-4 lg:left-0 bg-gray-200 hover:bg-gray-300 text-yellow-500 leading-tight font-bold py-2 px-4 rounded z-10 transition-colors"
             onClick={handlePrevClick}
           >
             Prev
@@ -83,10 +83,10 @@ const Testimonial = () => {
                       className="w-16 h-16 rounded-full object-cover"
                     />
                   </div>
-                  <p className="text-lg font-bold mb-2 text-white leading-tight">
+                  <p className="text-lg font-bold mb-2 text-yellow-500 leading-tight">
                     {testimonials[currentIndex].name}
                   </p>
-                  <p className="text-white leading-tight text-sm mb-2 max-w-xs mx-auto">
+                  <p className="text-yellow-500 leading-tight text-sm mb-2 max-w-xs mx-auto">
                     {testimonials[currentIndex].Description}
                   </p>
                 </div>
@@ -95,7 +95,7 @@ const Testimonial = () => {
           </div>
           
           <button
-            className="hidden md:block absolute right-4 lg:right-0 bg-gray-200 hover:bg-gray-300 text-gray-900 leading-tight font-bold py-2 px-4 rounded z-10 transition-colors"
+            className="text-yellow-500 hidden md:block absolute right-4 lg:right-0 bg-gray-200 hover:bg-gray-300 leading-tight font-bold py-2 px-4 rounded z-10 transition-colors"
             onClick={handleNextClick}
           >
             Next
