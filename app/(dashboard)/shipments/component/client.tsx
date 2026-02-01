@@ -20,7 +20,7 @@ const ShipmentClient: React.FC<ShipmentClientProps>=({
       const [loading, setLoading] = useState(false);
         const handleAddNew = () => {
     setLoading(true);
-    router.push(`/shipments/new`);
+    router.push("/shipments/new");
   };
 
     return (
@@ -48,8 +48,8 @@ const ShipmentClient: React.FC<ShipmentClientProps>=({
                     <DataTable
                       columns={column}
                       data={data}
-                      searchkey="name"
-                     onRowClick={(row) => router.push(`/quote-request?id=${row.id}`)}
+                      searchkey="trackingNumber"
+                     onRowClick={(row) => router.push(`/shipments/${row.id}`)}
                     />
                   )}
         </>

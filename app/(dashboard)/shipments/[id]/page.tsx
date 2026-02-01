@@ -4,34 +4,41 @@ import { notFound } from "next/navigation";
 
 export default async function ShipmentPage({
     params
-}:{
-    params:{id:string}
-}){
-    const {id}=params;
+}: {
+    params: { id: string }
+}) {
+    const { id } = await params; 
 
-    if(id === "new"){
-        return(
+
+    if (id === "new") {
+        return (
             <div className="flex-1 space-y-4 p-8 pt-6">
-                <ShippingForm initialData ={null}/>
+                <ShippingForm 
+                    initialData={null} 
+                    />
             </div>
         )
     }
 
     const shipping = await prismadb.shipment.findUnique({
-        where:{
+        where: {
             id
+        },
+        include:{
+            receiverAddress:true
         }
     })
-    if(!shipping){
+    
+    if (!shipping) {
         return notFound()
     }
 
-    
     return (
         <div className="flex-col">
             <div className="flex-1 space-y-4 p-8 pt-6">
-                <ShippingForm initialData={shipping}/>
-                
+                <ShippingForm 
+                initialData={shipping}          
+                /> 
             </div>
         </div>
     )

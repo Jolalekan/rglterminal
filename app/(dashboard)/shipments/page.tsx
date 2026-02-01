@@ -5,6 +5,9 @@ import ShipmentClient from "./component/client"
 export default async function ShipmentPage() {
   
   const shipments = await prismadb.shipment.findMany({
+     orderBy: {
+      createdAt: 'desc' 
+    }
   
   })
 

@@ -5,11 +5,9 @@ import { NextResponse } from "next/server";
 export async function POST(req:Request){
     try {
         const body = await req.json();
-
+      console.log("Received shipment data", body)
         const { 
-                origin, 
                 destination, 
-                status, 
                 destinationPhone, 
                 packageType, 
                 state, 
@@ -17,9 +15,8 @@ export async function POST(req:Request){
                 street, 
                 city, 
                 country,  
-                estimatedDelivery,
-                existingAddressId,
                 addressLabel, 
+                estimatedDelivery
             } = body;
 
           if (!destination || !destinationPhone) {
@@ -29,62 +26,64 @@ export async function POST(req:Request){
       );
     }
 
-     const trackingNumber = generateTrackingNumber();
+     let trackingNumber = generateTrackingNumber();
 
 
-      if (!existingAddressId && (!street || !city || !state)) {
-      return NextResponse.json(
-        { message: "Complete address is required" },
-        { status: 400 }
-      );
+        let existing = await prismadb.shipment.findUnique({
+      where: { trackingNumber }
+    });
+    
+    while (existing) {
+      trackingNumber = generateTrackingNumber();
+      existing = await prismadb.shipment.findUnique({
+        where: { trackingNumber }
+      });
     }
+
+        const COMPANY_ORIGIN = process.env.COMPANY_NAME || "Warehouse";
+      const COMPANY_CITY = process.env.COMPANY_CITY || "Main Hub";
+
+        const address = await prismadb.address.create({
+      data: {
+        street,
+        city,
+        state,
+        country,
+        postalCode,
+        label: addressLabel || "Receiver Address",
+      },
+    });
 
 
     const shipment = await prismadb.shipment.create({
       data: {
         trackingNumber,
-        
-        // Receiver Info
-        origin,
+        origin: COMPANY_ORIGIN,
         destination,
         destinationPhone,
-        
-         receiverAddress: existingAddressId
-          ? {
-              connect: { id: existingAddressId }
-            }
-          : {
-              create: {
-                street,
-                city,
-                state,
-                postalCode,
-                country,       
-                label: addressLabel,       
-              }
-            },
-     
-      packageType,
-      status: "Pending",
-    estimatedDelivery,
+        receiverAddressId: address.id,
+        packageType,
+        status: "Pending",
+        currentLocation: COMPANY_CITY,
+        estimatedDelivery: estimatedDelivery ? new Date(estimatedDelivery) : null,
 
-       trackingEvents: {
+        // Create initial tracking event
+        trackingEvents: {
           create: {
             status: "Pending",
-            location: process.env.COMPANY_CITY || "Main Hub",
+            location: COMPANY_CITY,
             description: "Shipment created and awaiting pickup",
             timestamp: new Date(),
-          }
-        }
-    
-    },
-    include: {
+          },
+        },
+      },
+      include: {
         receiverAddress: true,
         trackingEvents: true,
-      }
-    })
+      },
+    });
 
-      return NextResponse.json(
+    return NextResponse.json(
       {
         message: "Shipment created successfully",
         data: {
@@ -92,13 +91,13 @@ export async function POST(req:Request){
           id: shipment.id,
           status: shipment.status,
           estimatedDelivery: shipment.estimatedDelivery,
-        }
+        },
       },
       { status: 201 }
     );
-    } catch (error:any) {
-         console.error("Error creating shipment:", error);
-    
+  } catch (error: any) {
+    console.error("Error creating shipment:", error);
+
     // Handle Prisma specific errors
     if (error.code === "P2002") {
       return NextResponse.json(
@@ -106,12 +105,13 @@ export async function POST(req:Request){
         { status: 409 }
       );
     }
-       return NextResponse.json(
-      { 
+
+    return NextResponse.json(
+      {
         message: "Error creating shipment",
-        error: process.env.NODE_ENV === "development" ? error.message : undefined
+        error: process.env.NODE_ENV === "development" ? error.message : undefined,
       },
       { status: 500 }
     );
-    }
+  }
 }

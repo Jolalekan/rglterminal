@@ -106,6 +106,13 @@ const Navbar = () => {
                   Careers 
                 </Link>
               </li>
+              <li>
+                <Link href="/tracking" className={`font-medium transition ${
+                  isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white hover:text-gray-200'
+                }`}>
+                  Tracking 
+                </Link>
+              </li>
                  <li>
                   <motion.button
                     onClick={openQuote}
@@ -213,6 +220,17 @@ const Navbar = () => {
                   }`}
                 >
                   Careers 
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/tracking" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`text-center block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-90 hover:bg-gray-6000' : 'text-white hover:text-gray-200'
+                  }`}
+                >
+                  Tracking 
                 </Link>
               </li>
                  <li>
