@@ -38,6 +38,7 @@ export type Conversation = {
   id: string;
   email: string;
   name: string;
+  conversationId: string;
   slug: string;
   lastMessageAt: Date;
   createdAt: Date;

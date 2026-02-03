@@ -25,6 +25,11 @@ const menu =[
         label: "Contacts",
         href: "/contacts",  
     },
+    {
+        icon: "/contacts.png",
+        label: "Shipments",
+        href: "/shipments",  
+    },
 
 ]
 

@@ -20,7 +20,7 @@ export default async function DashboardLayout({
 
   return (
 
-<div className="h-screen overflow-hidden bg-gray-100">
+<div className=" overflow-hidden bg-gray-100">
       {/* Sidebar */}
       <aside
         className="
@@ -44,7 +44,7 @@ export default async function DashboardLayout({
       </aside>
 
       {/* Main content */}
-     <main className="ml-56 lg:ml-64 xl:ml-72 h-screen overflow-hidden bg-gray-100">
+     <main className="ml-56 lg:ml-64 xl:ml-72  overflow-hidden bg-gray-100">
         {children}
       </main>
     </div>
