@@ -1,4 +1,5 @@
 import prismadb from "@/lib/prismadb"
+import { revalidatePath } from "next/cache"
 
 export const markQuoteAsRead= async(quoteId:string)=>{
     try {
@@ -8,8 +9,8 @@ export const markQuoteAsRead= async(quoteId:string)=>{
                 status: "Read",
                 updatedAt: new Date()
             }
-        });
-
+        }); 
+        revalidatePath("/quote-request");
         return {success:true};
     } catch (error) {
         console.error("Error marking quote as read", error);

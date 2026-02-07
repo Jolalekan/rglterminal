@@ -1,13 +1,21 @@
+"use client";
+
 import { truncateText } from "@/lib/truncate";
 import { Contact } from "@/type";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 interface AllContactProps {
   data: Contact[];
-  onSelect: (data: Contact) => void;
 }
 
-const AllContacts: React.FC<AllContactProps> = ({ data, onSelect }) => {
+const AllContacts: React.FC<AllContactProps> = ({ data }) => {
+
+const router = useRouter();
+
+ const handleSelect = (contact:Contact) => {
+    router.push(`?id=${contact.id}`, { scroll: false });
+  };
 
   return (
 
@@ -18,7 +26,7 @@ const AllContacts: React.FC<AllContactProps> = ({ data, onSelect }) => {
         <div
           key={item.id}
           className="border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition"
-          onClick={() => onSelect(item)}
+          onClick={() => handleSelect(item)}
         >
           {/* Top Row */}
           <div className="flex justify-between items-center">

@@ -34,13 +34,41 @@ export type Message = {
   updatedAt: Date;
 };
 
-export type Conversation = {
+export interface Conversation {
   id: string;
-  email: string;
   name: string;
-  conversationId: string;
-  slug: string;
+  email: string;
+  lastMessage: string;
   lastMessageAt: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  type: string;
+  unreadCount: number;
+
+    messages: Message[];
+  quoteRequests?: QuoteRequest[];
+  contacts?: Contact[];
+}
+export type ConversationWithDetails = Conversation & {
+  messages: Message[]; 
+  quoteRequests?: QuoteRequest[];
+  contacts?: Contact[];
 };
+
+export type ContactWithConversation = Contact & {
+  conversation: Conversation & {
+    messages: Message[]
+  }
+}
+
+
+export type  QuoteRequestWithConversation = QuoteRequest &{
+    conversation:Conversation & {
+      messages: Message[]
+    }
+  };
+
+
+// export type ConversationWithMessages = Conversation & {
+//   messages: Message[]; 
+//   quoteRequests?: QuoteRequest[];
+//   contacts?: Contact[];
+// };

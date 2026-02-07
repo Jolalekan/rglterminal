@@ -1,13 +1,26 @@
+import { markQuoteAsRead } from "@/action/mark-quote-as-read";
 import { truncateText } from "@/lib/truncate";
 import { QuoteRequest } from "@/type";
 import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 interface AllQuotesRequestProps {
   quotesRequest: QuoteRequest[];
-  onSelect: (message: QuoteRequest) => void;
+  
 }
 
-const AllQuotesRequest: React.FC<AllQuotesRequestProps> = ({ quotesRequest, onSelect }) => {
+const AllQuotesRequest: React.FC<AllQuotesRequestProps> = ({ quotesRequest }) => {
+    const router = useRouter();
+
+
+  const handleSelect = async(quote: QuoteRequest) => {
+
+    if(quote.status === "New"){
+      await markQuoteAsRead(quote.id)
+      router.refresh()
+    }
+    router.push(`?id=${quote.id}`, { scroll: false });
+  };
 
   return (
     <div className=" bg-white w-full">
@@ -17,7 +30,7 @@ const AllQuotesRequest: React.FC<AllQuotesRequestProps> = ({ quotesRequest, onSe
             <div 
               key={quoteRequest.id}
               className="border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition"
-              onClick={() => onSelect(quoteRequest)}
+              onClick={() => handleSelect(quoteRequest)}
             >
               {/* Top Row */}
               <div className="flex justify-between items-center">
