@@ -1,5 +1,6 @@
 import prismadb from "@/lib/prismadb";
 import { ContactClient } from "./component/client";
+import { ContactWithConversation } from "@/type";
 
 
 export default async function Contacts() {
@@ -17,7 +18,7 @@ export default async function Contacts() {
     orderBy:{
       createdAt:"desc"
     }
-  })
+  }) as ContactWithConversation[];
 
  const stats = {
     total: contacts.length,

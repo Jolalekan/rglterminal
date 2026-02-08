@@ -1,3 +1,5 @@
+"use client"
+
 import { markQuoteAsRead } from "@/action/mark-quote-as-read";
 import { truncateText } from "@/lib/truncate";
 import { QuoteRequest } from "@/type";
@@ -29,7 +31,11 @@ const AllQuotesRequest: React.FC<AllQuotesRequestProps> = ({ quotesRequest }) =>
           {quotesRequest.map((quoteRequest) => (
             <div 
               key={quoteRequest.id}
-              className="border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition"
+                className={`border rounded-md p-3 hover:bg-yellow-200 cursor-pointer transition ${
+                quoteRequest.status === "New" 
+                  ? "bg-blue-50 border-blue-200" 
+                  : "bg-white"
+              }`}
               onClick={() => handleSelect(quoteRequest)}
             >
               {/* Top Row */}

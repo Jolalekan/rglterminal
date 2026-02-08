@@ -1,4 +1,4 @@
-import { Contact, Conversation, Message } from "@/type";
+import { Contact, ContactWithConversation, Conversation, Message } from "@/type";
 import { format } from "date-fns";
 import { Mail, Phone, Calendar, MessageSquare, Reply } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,11 +6,7 @@ import { useState } from "react";
 import EmailReplyModal from "./email-reply";
 
 interface DisplayContactMessagesProps {
-  data: Contact &{
-    conversation:Conversation & {
-      messages: Message[]
-    }
-  } | null;
+  data: ContactWithConversation | null;
 }
 
 const DisplayContactMessages: React.FC<DisplayContactMessagesProps> = ({ data }) => {
@@ -85,7 +81,7 @@ const DisplayContactMessages: React.FC<DisplayContactMessagesProps> = ({ data })
             </div>
 
             {/* Conversation Messages */}
-            {data.conversation.messages.length > 0 && (
+            {data.conversation && data.conversation.messages.length > 0 && (
               <div className="space-y-4">
                 <h4 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
                   <MessageSquare className="w-4 h-4" />
@@ -127,7 +123,7 @@ const DisplayContactMessages: React.FC<DisplayContactMessagesProps> = ({ data })
           <div className="flex items-center gap-2 text-xs text-gray-500">
             <Calendar className="w-3 h-3" />
             <span>Received {format(new Date(data.createdAt), "PPP")}</span>
-            {data.conversation.messages.length > 0 && (
+            {data.conversation && data.conversation.messages.length > 0 && (
               <>
                 <span className="mx-2">•</span>
                 <span>{data.conversation.messages.length} {data.conversation.messages.length === 1 ? 'reply' : 'replies'}</span>
@@ -138,14 +134,16 @@ const DisplayContactMessages: React.FC<DisplayContactMessagesProps> = ({ data })
       </div>
 
       {/* Email Reply Modal */}
-      <EmailReplyModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        recipientEmail={data.email}
-        recipientName={data.firstName}
-        originalMessage={data.message}
-        conversationId={data.conversationId}
-      />
+      {data.conversation && (
+        <EmailReplyModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          recipientEmail={data.email}
+          recipientName={data.firstName}
+          originalMessage={data.message}
+          conversationId={data.conversation.conversationId}
+        />
+      )}
     </>
   );
 };

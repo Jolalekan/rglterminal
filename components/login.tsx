@@ -53,14 +53,13 @@ export const Login = () => {
   console.log("value", values)
 
   try {
-    console.log("loging value", values)   
  
     const res =  await axios.post("api/auth/login", values);
 
     console.log("res", res)
     if(res.status === 200){
       console.log("login sucessful", res.data);
-      router.push("/dashboard")
+      router.push("/quote-request")
     }
  
   } catch (err: any) {

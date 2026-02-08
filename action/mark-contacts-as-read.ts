@@ -1,14 +1,17 @@
+"use server";
+
 import prismadb from "@/lib/prismadb";
 
 export const markContactAsRead= async(contactId:string)=>{
     try {
-        await prismadb.contact.update({
+     const contact=   await prismadb.contact.update({
             where:{id:contactId},
             data:{
                 status: "Read",
                 updatedAt: new Date()
             }
         }); 
+        console.log("contact update", contact.status)
 
         return {success:true};
     } catch (error) {

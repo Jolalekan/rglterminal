@@ -40,7 +40,7 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
   
     return (
       <div className="h-screen flex flex-col p-6">
-         <div className="grid grid-cols-4 gap-4">
+         <div className="grid grid-cols-3 gap-4">
                     <Card>
                       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
@@ -83,13 +83,12 @@ export const QuoteRequestClient:React.FC<QuoteRequestClientProps> =({
                       <CardContent>
                         <div className="text-2xl font-bold">
                             {stats.read}
-                          {/* {formatter.format(totalRevenue)} */}
                         </div>
                       </CardContent>
                     </Card>
                   </div>
       {/* Top Section */}
-      <div className="flex items-center justify-between mb-6 flex-shrink-0">
+      <div className="flex items-center justify-between mb-2 mt-2 flex-shrink-0">
         <h2 className="text-2xl font-semibold flex items-center gap-2">
           <MessageSquare className="w-6 h-6 text-green-600" />
           Quotes Request

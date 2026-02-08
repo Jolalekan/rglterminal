@@ -43,21 +43,8 @@ export const ContactClient:React.FC<ContactClientProps> =({
   return (
     <div className="h-screen flex flex-col p-6">
       {/* Top Section */}
-      <div className="flex items-center justify-between mb-6 flex-shrink-0">
-        <h2 className="text-2xl font-semibold flex items-center gap-2">
-          <MessageSquare className="w-6 h-6 text-green-600" />
-          Messages
-        </h2>
-        {/* Search */}
-        <Input
-          placeholder="Search by name or email..."
-          className="w-full md:w-1/3"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
-
- <div className="grid grid-cols-4 gap-4">
+     
+ <div className="grid grid-cols-3 gap-4">
                     <Card>
                       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
@@ -105,6 +92,21 @@ export const ContactClient:React.FC<ContactClientProps> =({
                       </CardContent>
                     </Card>
                   </div>
+
+                   <div className="flex items-center justify-between mb-2 mt-2 flex-shrink-0">
+        <h2 className="text-2xl font-semibold flex items-center gap-2">
+          <MessageSquare className="w-6 h-6 text-green-600" />
+          Messages
+        </h2>
+        {/* Search */}
+        <Input
+          placeholder="Search by name or email..."
+          className="w-full md:w-1/3"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
       {/* Main Layout */}
       <section className="flex gap-4 flex-1 overflow-hidden">
         {/* Message List */}

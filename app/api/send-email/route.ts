@@ -104,8 +104,6 @@ export async function POST(req: Request) {
       }
     }
     
-    console.log("✅ Email sent and saved");
-    
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Email error:", error);

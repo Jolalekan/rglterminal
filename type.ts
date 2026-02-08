@@ -6,6 +6,7 @@ export interface QuoteRequest{
     phone?:string | null;
     status:string;
     serviceType:string;
+    company:string;
     createdAt:Date;
 }
 
@@ -15,6 +16,7 @@ export interface Contact{
     surname:string;
     email:string;
     phone?:string | null;
+    status:string;
     message:string;
     createdAt:Date;
 }
@@ -42,33 +44,17 @@ export interface Conversation {
   lastMessageAt: Date;
   type: string;
   unreadCount: number;
-
-    messages: Message[];
-  quoteRequests?: QuoteRequest[];
-  contacts?: Contact[];
+  conversationId: string;
 }
-export type ConversationWithDetails = Conversation & {
-  messages: Message[]; 
-  quoteRequests?: QuoteRequest[];
-  contacts?: Contact[];
-};
 
 export type ContactWithConversation = Contact & {
   conversation: Conversation & {
     messages: Message[]
-  }
+  } | null
 }
 
-
-export type  QuoteRequestWithConversation = QuoteRequest &{
-    conversation:Conversation & {
-      messages: Message[]
-    }
-  };
-
-
-// export type ConversationWithMessages = Conversation & {
-//   messages: Message[]; 
-//   quoteRequests?: QuoteRequest[];
-//   contacts?: Contact[];
-// };
+export type QuoteRequestWithConversation = QuoteRequest & {
+  conversation: (Conversation & {
+    messages: Message[]
+  }) | null
+}

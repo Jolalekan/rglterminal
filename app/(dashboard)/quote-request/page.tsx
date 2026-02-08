@@ -1,10 +1,9 @@
 import prismadb from "@/lib/prismadb";
 import { QuoteRequestClient } from "./component/client";
-import { getQuoteStatusCounts } from "@/action/quote-action";
+import { QuoteRequestWithConversation } from "@/type";
 
 
 export default async function QuoteRequest() {
-  // const stats = await getQuoteStatusCounts();
 
  const quotes = await prismadb.quoteRequest.findMany({
     include: {
@@ -19,8 +18,11 @@ export default async function QuoteRequest() {
     orderBy: {
       createdAt: "desc"
     }
-  });
+  }) as QuoteRequestWithConversation[];
 
+  if(!quotes){
+    return null;
+  }
   // Calculate stats from the fetched quotes
   const stats = {
     total: quotes.length,
