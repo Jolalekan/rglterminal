@@ -148,6 +148,11 @@ const Footer = () => {
                     Careers
                   </Link>
                 </li>
+                <li>
+                  <Link href="/tracking" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                    Tracking
+                  </Link>
+                </li>
               </ul>
             </motion.div>
 

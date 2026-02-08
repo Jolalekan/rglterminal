@@ -5,90 +5,9 @@ import { motion } from "framer-motion"
 import { Briefcase, Users, TrendingUp, Award, MapPin, Clock, DollarSign, Heart } from "lucide-react"
 
 const CareerClient = () => {
-  const benefits = [
-    {
-      icon: DollarSign,
-      title: "Competitive Salary",
-      description: "Industry-leading compensation packages with performance bonuses"
-    },
-    {
-      icon: TrendingUp,
-      title: "Career Growth",
-      description: "Clear career progression paths and professional development programs"
-    },
-    {
-      icon: Heart,
-      title: "Health Benefits",
-      description: "Comprehensive health insurance for you and your family"
-    },
-    {
-      icon: Clock,
-      title: "Work-Life Balance",
-      description: "Flexible working hours and generous vacation policies"
-    }
-  ]
+  
 
-  const openPositions = [
-    {
-      title: "Logistics Manager",
-      department: "Operations",
-      location: "Lagos, Nigeria",
-      type: "Full-time"
-    },
-    {
-      title: "Warehouse Supervisor",
-      department: "Warehousing",
-      location: "Port Harcourt, Nigeria",
-      type: "Full-time"
-    },
-    {
-      title: "Customs Clearance Officer",
-      department: "Compliance",
-      location: "Lagos, Nigeria",
-      type: "Full-time"
-    },
-    {
-      title: "Fleet Manager",
-      department: "Transport",
-      location: "Lagos, Nigeria",
-      type: "Full-time"
-    },
-    {
-      title: "Customer Service Representative",
-      department: "Client Relations",
-      location: "Lagos, Nigeria",
-      type: "Full-time"
-    },
-    {
-      title: "Operations Coordinator",
-      department: "Operations",
-      location: "Abuja, Nigeria",
-      type: "Full-time"
-    }
-  ]
 
-  const values = [
-    {
-      icon: Users,
-      title: "Team Collaboration",
-      description: "Work with passionate professionals who value teamwork"
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "Strive for excellence in everything we do"
-    },
-    {
-      icon: TrendingUp,
-      title: "Innovation",
-      description: "Embrace new ideas and continuous improvement"
-    },
-    {
-      icon: Heart,
-      title: "Integrity",
-      description: "Maintain the highest ethical standards"
-    }
-  ]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -181,43 +100,7 @@ const CareerClient = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto space-y-4"
           >
-            {openPositions.map((position, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ x: 10 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all cursor-pointer group"
-              >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-yellow-600 transition-colors">
-                      {position.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-3 text-sm text-gray-600">
-                      <span className="flex items-center">
-                        <Briefcase className="w-4 h-4 mr-1" />
-                        {position.department}
-                      </span>
-                      <span className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        {position.location}
-                      </span>
-                      <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {position.type}
-                      </span>
-                    </div>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition self-start md:self-center"
-                  >
-                    Apply Now
-                  </motion.button>
-                </div>
-              </motion.div>
-            ))}
+            <h2 className="text-xl text-gray-700 text-center">Please check in the company for available position, you can also contact us through our email and phone number</h2>
           </motion.div>
         </div>
       </section>
