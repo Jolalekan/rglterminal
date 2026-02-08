@@ -3,7 +3,7 @@ import prismadb from "@/lib/prismadb";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> } 
 ) {
   try {
     const body = await req.json();
@@ -65,7 +65,7 @@ export async function PATCH(
 
 export async function DELETE(
     req:Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> } 
 ){
     try {
         const { id } = await params;

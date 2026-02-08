@@ -3,10 +3,10 @@ import { NextResponse } from "next/server";
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }  // Changed to Promise
 ){
     try {
-        const { id } = await params;
+        const { id } = await params;  
 
         // Get the contact first to find its conversation
         const contact = await prismadb.contact.findUnique({
