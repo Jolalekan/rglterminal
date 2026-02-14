@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import prismadb from "@/lib/prismadb";
-import { Package, MapPin, Calendar, Phone } from "lucide-react";
+import { Package, MapPin, Calendar } from "lucide-react";
 import { getStatusColor } from "@/lib/get-status-color";
 import TrackingTimeline from "@/components/tracking-timeline";
 

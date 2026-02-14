@@ -34,16 +34,6 @@ const LocationMap = () => {
     });
   }, []);
 
-  //     useEffect(() => {
-  //     // Fix for marker icon in production
-  //     delete (L.Icon.Default.prototype as any)._getIconUrl
-  //     L.Icon.Default.mergeOptions({
-  //       iconUrl: '/marker-icon.png',
-  //       iconRetinaUrl: '/marker-icon-2x.png',
-  //       shadowUrl: '/marker-shadow.png',
-  //     })
-  //   }, [])
-
   return (
     <MapContainer
       center={position}
@@ -60,13 +50,12 @@ const LocationMap = () => {
           <div className="text-center">
             <strong>Rolling Grazing Bonded Terminal</strong>
             <br />
-            klm 26, Opp. Foreign Affair Academy,
+            Kilometer 26, Opposite Foreign Affairs Academy
             <br />
-            Lagos/ Badagry Expressway,
+            Ijanikin Badagry Expressway,
             <br />
-            Ayetoro/ Ijanikin,
-            <br />
-            Lagos State, Nigeria
+            Lagos Nigeria
+           
           </div>
         </Popup>
       </Marker>

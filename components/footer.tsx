@@ -12,21 +12,17 @@ interface SocialMedia {
   facebook?: string;
   instagram?: string;
   twitter: string;
-  youtube: string;
   tiktok: string;
-  pinterest: string;
 }
 
 const Footer = () => {
   const [email, setEmail] = useState("");
 
   const socialMedia: SocialMedia = {
-    facebook: "rglterminal",
-    instagram: "rglterminal",
-    twitter: "rglterminal",
-    youtube: "rglterminal",
-    tiktok: "rglterminal",
-    pinterest: "rglterminal",
+    facebook: "rollinggrazingltd",
+    instagram: "rollinggrazingltd",
+    twitter: "rollinggrazingltd",
+    tiktok: "rollinggrazingltd",
   };
 
   const { facebook, instagram, tiktok, twitter } = socialMedia;
@@ -34,8 +30,7 @@ const Footer = () => {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle subscription logic
-    console.log("Subscribing:", email);
+  
   };
 
   const containerVariants = {
@@ -92,10 +87,9 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-1" />
                   <span>
-                    klm 26, Opp. Foreign Affair Academy,<br />
-                    Lagos/ Badagry Expressway,<br />
-                    Ayetoro/ Ijanikin,<br />
-                    Lagos State, Nigeria
+                    Kilometer 26, Opposite Foreign Affairs Academy,<br />
+                    Ijanikin Badagry Expressway,<br />
+                    Lagos Nigeria
                   </span>
                 </div>
                 
@@ -109,10 +103,10 @@ const Footer = () => {
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />
                   <a href="tel:+2349060005911" className="hover:text-yellow-500 transition">
-                    +234 906 600 5911
+                    +234 704 000 4826
                   </a>
                   <a href="tel:+2348020992018" className="hover:text-yellow-500 transition">
-                    +234 802 099 2018
+                    +234 704 000 4822
                   </a>
                 </div>
               </div>

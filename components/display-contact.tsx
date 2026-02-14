@@ -1,4 +1,4 @@
-import { Contact, ContactWithConversation, Conversation, Message } from "@/type";
+import { ContactWithConversation } from "@/type";
 import { format } from "date-fns";
 import { Mail, Phone, Calendar, MessageSquare, Reply } from "lucide-react";
 import { Button } from "@/components/ui/button";

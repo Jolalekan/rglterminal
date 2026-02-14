@@ -101,10 +101,9 @@ const ContactClient = () => {
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
                     <span>
-                    klm 26, Opp. Foreign Affair Academy,<br />
-                    Lagos/ Badagry Expressway,<br />
-                    Ayetoro/ Ijanikin,<br />
-                    Lagos State, Nigeria
+                    Kilometer 26, Opposite Foreign Affairs Academy,<br />
+                    Ijanikin Badagry Expressway,<br />
+                    Lagos Nigeria
                   </span>
                   </div>
                 </div>
@@ -113,8 +112,8 @@ const ContactClient = () => {
                   <Phone className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                    <p className="text-gray-700">+234 802 323 2444</p>
-                    <p className="text-gray-700">+234 906 000 5911</p>
+                    <p className="text-gray-700">+234 704 000 4826</p>
+                    <p className="text-gray-700">+234 704 000 4822</p>
                   </div>
                 </div>
 
@@ -146,7 +145,7 @@ const ContactClient = () => {
                   Get Directions
                 </motion.a>
                 <motion.a
-                  href="tel:+2348023232444"
+                  href="tel:+2347040004826"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="flex-1 border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:text-white transition text-center"

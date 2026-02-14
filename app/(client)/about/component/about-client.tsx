@@ -2,6 +2,7 @@
 
 import Frequently from "@/components/frequently"
 import Welcome from "@/components/welcome"
+import { members } from "@/lib/members";
 import { motion } from "framer-motion"
 import { Target, Lightbulb, Award, Users } from "lucide-react"
 import Image from "next/image";
@@ -256,6 +257,52 @@ const AboutClient = () => {
                         ))}
                       </motion.div>
 
+        </div>
+      </section>
+      {/* Core Values Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mt-2 mb-4">
+              Our Team <span className="text-yellow-600">Members</span>
+            </h2>
+       
+          </motion.div>
+
+           <motion.div
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+>
+  {members.map((member, index) => (
+    <motion.div
+      key={index}
+      variants={itemVariants}
+      className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group cursor-pointer flex flex-col items-center p-6"
+    >
+      <div className="mb-4">
+        <Image
+          src={`/${member.image}`}
+          alt={member.name}
+          width={150}
+          height={150}
+          className="rounded-full w-48 h-48 object-cover"
+        />
+      </div>
+      <h3 className="text-center text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+      <p className="text-sm text-gray-600 mb-4">{member.position}</p>
+    </motion.div>
+  ))}
+</motion.div>
         </div>
       </section>
 
