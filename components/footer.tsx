@@ -22,7 +22,7 @@ const Footer = () => {
     facebook: "rollinggrazingltd",
     instagram: "rollinggrazingltd",
     twitter: "rollinggrazingltd",
-    tiktok: "rollinggrazingltd",
+    tiktok: "@rollinggrazingltd",
   };
 
   const { facebook, instagram, tiktok, twitter } = socialMedia;
@@ -30,7 +30,6 @@ const Footer = () => {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-  
   };
 
   const containerVariants = {
@@ -102,10 +101,10 @@ const Footer = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-yellow-500 flex-shrink-0" />
-                  <a href="tel:+2349060005911" className="hover:text-yellow-500 transition">
+                  <a href="tel:+2347040004826" className="hover:text-yellow-500 transition">
                     +234 704 000 4826
                   </a>
-                  <a href="tel:+2348020992018" className="hover:text-yellow-500 transition">
+                  <a href="tel:+2347040004822" className="hover:text-yellow-500 transition">
                     +234 704 000 4822
                   </a>
                 </div>

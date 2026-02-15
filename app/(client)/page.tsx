@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Rolling Grazing Bonded Terminal offers comprehensive logistics solutions including warehousing, container storage, maritime shipping, and customs clearance in Lagos, Nigeria.',
   openGraph: {
     title: 'Rolling Grazing Bonded Terminal - Home',
-    description: 'Premier logistics and bonded terminal services in Nigeria',
+    description: 'Rolling logistics and bonded terminal services in Nigeria',
     url: 'https://rglbondedterminal.com',
     images: ['/og-home.jpg'],
   },

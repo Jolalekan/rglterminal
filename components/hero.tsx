@@ -6,7 +6,7 @@ const Hero = () => {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/img1.jpg" 
+        src="/home.jpeg" 
         alt="Hero background"
         fill
         className="object-cover"
