@@ -5,7 +5,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Fix for default marker icons in Next.js
+// Fix for default marker icons in Next.js 
 const icon = L.icon({
   iconUrl: "/marker-icon.png",
   iconRetinaUrl: "/marker-icon-2x.png",
@@ -19,11 +19,9 @@ const icon = L.icon({
 const LocationMap = () => {
   // Your business location - Victoria Island, Lagos
   const position: [number, number] = [6.4708, 3.1479]; // Replace with your exact coordinates
-  // const position: [number, number] = [6.4281, 3.4219]; // Replace with your exact coordinates
 
   useEffect(() => {
     // Fix for marker icon in production
-    // Remove private _getIconUrl in a type-safe way
     delete (
       L.Icon.Default.prototype as unknown as { _getIconUrl?: () => string }
     )._getIconUrl;
@@ -35,32 +33,82 @@ const LocationMap = () => {
   }, []);
 
   return (
-    <MapContainer
-      center={position}
-      zoom={15}
-      style={{ height: "100%", width: "100%", borderRadius: "1rem" }}
-      scrollWheelZoom={false}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={icon}>
-        <Popup>
-          <div className="text-center">
-            <strong>Rolling Grazing Bonded Terminal</strong>
-            <br />
-            Kilometer 26, Opposite Foreign Affairs Academy
-            <br />
-            Ijanikin Badagry Expressway,
-            <br />
-            Lagos Nigeria
-           
-          </div>
-        </Popup>
-      </Marker>
-    </MapContainer>
+    <div className="relative z-0 h-full w-full">
+      <MapContainer
+        center={position}
+        zoom={15}
+        style={{ height: "100%", width: "100%", borderRadius: "1rem", zIndex: 0 }}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={icon}>
+          <Popup>
+            <div className="text-center">
+              <strong>Rolling Grazing Bonded Terminal</strong>
+              <br />
+              Kilometer 26, Opposite Foreign Affairs Academy
+              <br />
+              Ijanikin Badagry Expressway,
+              <br />
+              Lagos Nigeria
+            </div>
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
   );
 };
 
 export default LocationMap;
+
+// const LocationMap = () => {
+//   // Your business location - Victoria Island, Lagos
+//   const position: [number, number] = [6.4708, 3.1479]; // Replace with your exact coordinates
+//   // const position: [number, number] = [6.4281, 3.4219]; // Replace with your exact coordinates
+
+//   useEffect(() => {
+//     // Fix for marker icon in production
+//     // Remove private _getIconUrl in a type-safe way
+//     delete (
+//       L.Icon.Default.prototype as unknown as { _getIconUrl?: () => string }
+//     )._getIconUrl;
+//     L.Icon.Default.mergeOptions({
+//       iconUrl: "/marker-icon.png",
+//       iconRetinaUrl: "/marker-icon-2x.png",
+//       shadowUrl: "/marker-shadow.png",
+//     });
+//   }, []);
+
+//   return (
+//     <MapContainer
+//       center={position}
+//       zoom={15}
+//       style={{ height: "100%", width: "100%", borderRadius: "1rem" }}
+//       scrollWheelZoom={false}
+//     >
+//       <TileLayer
+//         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+//       />
+//       <Marker position={position} icon={icon}>
+//         <Popup>
+//           <div className="text-center">
+//             <strong>Rolling Grazing Bonded Terminal</strong>
+//             <br />
+//             Kilometer 26, Opposite Foreign Affairs Academy
+//             <br />
+//             Ijanikin Badagry Expressway,
+//             <br />
+//             Lagos Nigeria
+           
+//           </div>
+//         </Popup>
+//       </Marker>
+//     </MapContainer>
+//   );
+// };
+
+// export default LocationMap;

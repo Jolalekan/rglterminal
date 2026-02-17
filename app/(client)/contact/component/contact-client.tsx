@@ -36,7 +36,7 @@ const LocationMap = dynamic(() => import('@/components/location-map'), {
 })
 
 const ContactClient = () => {
-
+ 
   return (
     <div className="bg-white">
       {/* Hero Section */}

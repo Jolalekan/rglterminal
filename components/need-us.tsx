@@ -11,8 +11,8 @@ const NeedUs = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+234 906 000 5911",
-      href: "tel:+2349060005911",
+      value: "+234 704 000 4826",
+      href: "tel:+2347040004826",
     },
     {
       icon: Mail,
@@ -29,7 +29,7 @@ const NeedUs = () => {
     {
       icon: Clock,
       label: "Working Hours",
-      value: "Mon - Fri: 8AM - 6PM",
+      value: "Mon-Fri: 8AM - 6PM",
       href: "#",
     },
   ];
@@ -118,7 +118,7 @@ const NeedUs = () => {
                       <p className="text-sm text-gray-500 font-medium mb-1">
                         {item.label}
                       </p>
-                      <p className="text-gray-900 font-semibold leading-snug">
+                      <p className="text-gray-900 text-sm font-semibold leading-snug">
                         {item.value}
                       </p>
                     </div>

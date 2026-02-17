@@ -45,7 +45,7 @@ const Navbar = () => {
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : '-100%' }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className={`px-4 lg:px-0 fixed top-0 left-0 right-0 z-90 ${
+      className={`px-4 lg:px-0 fixed top-0 left-0 right-0 z-[9999] ${
         isScrolled 
           ? 'bg-white shadow-md' 
           : 'bg-white/10 backdrop-blur-md'

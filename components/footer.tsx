@@ -63,7 +63,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="py-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-12">
             
             {/* Company Info */}
             <motion.div variants={itemVariants} className="space-y-4">

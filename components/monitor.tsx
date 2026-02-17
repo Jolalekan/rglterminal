@@ -4,13 +4,16 @@
 import Image from 'next/image'
 import { motion, Variants } from 'framer-motion'
 import { Package, Clock, MapPin, Shield } from 'lucide-react'
+import Link from 'next/link'
 
 const Monitor = () => {
   const features = [
     {
       icon: Package,
       title: 'Real-Time Tracking',
-      description: 'Track every shipment in real-time'
+      description: 'Track every shipment in real-time',
+      href: "/tracking"
+
     },
     {
       icon: Clock,
@@ -70,6 +73,46 @@ const Monitor = () => {
 
             {/* LEFT — Zig-Zag Feature Grid */}
             <motion.div
+  variants={containerVariants}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+  className="grid grid-cols-2 gap-6"
+>
+  {features.map((feature, index) => {
+    const content = (
+      <motion.div
+        key={index}
+        variants={itemVariants}
+        whileHover={{ scale: 1.05 }}
+        className={`
+          bg-white/10 backdrop-blur-md rounded-xl p-6
+          border border-white/20 hover:bg-white/20
+          transition-all duration-300
+          ${index % 2 === 0 ? 'lg:translate-y-10' : ''}
+          ${feature.href ? 'cursor-pointer' : ''}
+        `}
+      >
+        <feature.icon className="w-8 h-8 text-yellow-400 mb-4" />
+        <h3 className="text-white font-bold text-lg mb-1">
+          {feature.title}
+        </h3>
+        <p className="text-gray-300 text-sm leading-relaxed">
+          {feature.description}
+        </p>
+      </motion.div>
+    );
+
+    return feature.href ? (
+      <Link key={index} href={feature.href}>
+        {content}
+      </Link>
+    ) : (
+      content
+    );
+  })}
+</motion.div>
+            {/* <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -97,7 +140,7 @@ const Monitor = () => {
                   </p>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             {/* RIGHT — Text Content */}
             <motion.div

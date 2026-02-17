@@ -18,7 +18,7 @@ const Welcome = () => {
             className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image 
-              src="/img6.jpg" 
+              src="/truck.jpeg" 
               alt="welcome" 
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
@@ -46,7 +46,7 @@ const Welcome = () => {
             </h2>
             
             <p className="text-lg text-gray-600 leading-relaxed">
-              We are glad to have you here. With over 20 years of experience in logistics 
+              We are glad to have you here. With over 15 years of experience in logistics 
               and goods management, we provide seamless shipping solutions that connect 
               businesses across the globe.
             </p>

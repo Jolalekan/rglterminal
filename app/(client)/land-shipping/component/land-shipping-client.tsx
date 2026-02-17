@@ -2,9 +2,9 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Truck, CirclePlus, Package, BarChart3, Shield } from 'lucide-react'
+import {  CirclePlus } from 'lucide-react'
 
-const BondedTerminalClient = () => {
+const LandShippingClient = () => {
   
 
   const benefits = [
@@ -250,4 +250,4 @@ const BondedTerminalClient = () => {
   )
 }
 
-export default BondedTerminalClient
+export default LandShippingClient

@@ -17,9 +17,8 @@ const Frequently = () => {
 
   const [clientCount, setClientCount] = useState(0);
   const { openQuote } = useQuote();
-  // Animate counter from 19950 to 20000
   useEffect(() => {
-    const controls = animate(19950, 20000, {
+    const controls = animate(9500, 10500, {
       duration: 2,
       ease: "easeOut",
       onUpdate: (latest) => {
@@ -105,7 +104,7 @@ const Frequently = () => {
     cursor-pointer
   "
 >
-  {/* Sliding background overlay */}
+ 
   <motion.span
     aria-hidden
     className="absolute inset-0 bg-yellow-700"

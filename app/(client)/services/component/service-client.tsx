@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, animate } from 'framer-motion'
-import { ArrowRight, Package, Warehouse, Container, Ship } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import ChooseUs from '@/components/choose-us'
@@ -35,17 +35,17 @@ const ServicesClient = () => {
       color: "green"
     },
     {
-      image: "/img12.jpg",
-      href: "/bonded-terminal",
-      title: "Bonded Terminal",
-      description: "Specialized handling for bulk commodities with state-of-the-art equipment and expertise.",
+      image: "/trucks.jpeg",
+      href: "/land-shipping",
+      title: "Land Shipping",
+      description: "Specialized handling for bulk commodities within Nigeria and across Africa countries.",
 
       color: "purple"
     },
   ]
 
   const stats = [
-    { number: 20, suffix: "+", label: "Years Experience" },
+    { number: 15, suffix: "+", label: "Years Experience" },
     { number: 10500, suffix: "+", label: "Happy Clients" },
     { number: 100, suffix: "+", label: "Dedicated Staff" },
     { number: 100, suffix: "+", label: "Fleet Trucks" }
@@ -170,60 +170,6 @@ const ServicesClient = () => {
               With over 15 years of experience, we offer fast turnaround times, competitive rates, 
               and friendly customer service that will make the process of international trade easy for you.
             </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto"
-          >
-            {Services.map((service, index) => {
-              const colorClasses = getColorClasses(service.color)
-              return (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  whileHover={{ y: -10 }}
-                  className="group"
-                >
-                  <Link href={service.href}>
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      {/* Content */}
-                      <div className="p-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed mb-4">
-                          {service.description}
-                        </p>
-                        
-                        <div className="flex items-center text-yellow-600 font-semibold group-hover:translate-x-2 transition-transform">
-                          <span>Learn More</span>
-                          <ArrowRight className="w-5 h-5 ml-2" />
-                        </div>
-                      </div>
-
-                      {/* Image */}
-                      <div className="relative h-64 overflow-hidden">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        
-                  
-                      </div>
-
-                     
-                    </div>
-                  </Link>
-                </motion.div>
-              )
-            })}
           </motion.div>
         </div>
       </section>
