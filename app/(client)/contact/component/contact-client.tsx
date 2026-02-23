@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Get in Touch for Logistics Solutions',
@@ -40,9 +41,18 @@ const ContactClient = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-32">
-        <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-5" />
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="h-[70vh] min-h-[500px] relative  text-white py-32">
+        <Image
+                 src="/trucks2.jpeg"
+                 alt="contact image"
+                 fill
+                 className="object-cover"
+                 priority
+               />
+ <div className="absolute inset-0 bg-black/50" />
+               
+     
+        <div className="container mx-auto px-4 relative z-5">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,102 +72,102 @@ const ContactClient = () => {
         </div>
       </section>
 
-         {/* Contact Form */}
+   
+
+<section className="py-20 bg-white">
+  <div className="container flex gap-6">
+  
+    {/* Contact Form - 2/3 width */}
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+        className="w-2/3 min-w-0 rounded-xl overflow-hidden shadow-2xl"
+    >
       <FormData />
+    </motion.div>
 
-      {/* Map & Form Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-            {/* Map */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="h-[500px] rounded-xl overflow-hidden shadow-2xl"
-            >
-              <LocationMap />
-            </motion.div>
+    {/* Quick Contact Info - 1/3 width */}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="w-1/3 min-w-0 space-y-6"
+    >
+      <div>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us Here</h2>
+        <p className="text-gray-600 mb-6">
+          Visit our office or reach out through any of the channels below. We&apos;re here to help!
+        </p>
+      </div>
 
-            {/* Quick Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-6"
-            >
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us Here</h2>
-                <p className="text-gray-600 mb-6">
-                  Visit our office or reach out through any of the channels below. We&apos;re here to help!
-                </p>
-              </div>
-
-              <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
-                    <span>
-                    Kilometer 26, Opposite Foreign Affairs Academy,<br />
-                    Ijanikin Badagry Expressway,<br />
-                    Lagos Nigeria
-                  </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <Phone className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                    <p className="text-gray-700">+234 704 000 4826</p>
-                    <p className="text-gray-700">+234 704 000 4822</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <Mail className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                    <p className="text-gray-700">info@rglterminal.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Working Hours</h4>
-                    <p className="text-gray-700">Mon - Fri: 8AM - 6PM</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <motion.a
-                  href="https://www.google.com/maps/search/?api=1&query=KLM+26,+Opp.+Foreign+Affair+Academy,+Lagos+Badagry+Expressway,+Ayetoro,+Ijanikin,+Lagos+State,+Nigeria"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition text-center"
-                >
-                  Get Directions
-                </motion.a>
-                <motion.a
-                  href="tel:+2347040004826"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:text-white transition text-center"
-                >
-                  Call Now
-                </motion.a>
-              </div>
-            </motion.div>
+      <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 space-y-4">
+        <div className="flex items-start space-x-3">
+          <MapPin className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
+            <span>
+              Kilometer 26, Opposite Foreign Affairs Academy,<br />
+              Ijanikin Badagry Expressway,<br />
+              Lagos Nigeria
+            </span>
           </div>
         </div>
-      </section>
 
+        <div className="flex items-start space-x-3">
+          <Phone className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
+            <p className="text-gray-700">+234 704 000 4826</p>
+            <p className="text-gray-700">+234 704 000 4822</p>
+          </div>
+        </div>
+
+        <div className="flex items-start space-x-3">
+          <Mail className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+            <p className="text-gray-700">info@rglterminal.com</p>
+          </div>
+        </div>
+
+        <div className="flex items-start space-x-3">
+          <Clock className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-1">Working Hours</h4>
+            <p className="text-gray-700">Mon - Fri: 8AM - 6PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex gap-4">
+        <motion.a
+          href="https://www.google.com/maps/search/?api=1&query=KLM+26,+Opp.+Foreign+Affair+Academy,+Lagos+Badagry+Expressway,+Ayetoro,+Ijanikin,+Lagos+State,+Nigeria"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex-1 bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition text-center"
+        >
+          Get Directions
+        </motion.a>
+        <motion.a
+          href="tel:+2347040004826"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="flex-1 border-2 border-yellow-600 text-yellow-600 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600 hover:text-white transition text-center"
+        >
+          Call Now
+        </motion.a>
+      </div>
+    </motion.div>
+
+  </div>
+</section>
+  
+  <LocationMap />
    
     </div>
   )

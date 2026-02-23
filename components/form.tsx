@@ -58,11 +58,9 @@ const FormData = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      // TODO: Add your API call here
-      console.log(values)
+  
       const response = await axios.post("/api/contacts",values )
       
-            console.log("response", response)
             if(response.status === 200){
               
               toast.success( "Message sent successfully! We'll get back to you as soon as possible."
@@ -98,18 +96,16 @@ const FormData = () => {
   }
 
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-8 scroll-mt-24">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+  
         
-
+<>
           {/* Form Card */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-2xl p-8 md:p-12"
+            className="bg-white rounded-2xl p-8 md:p-12 h-full"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -269,8 +265,8 @@ const FormData = () => {
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5" />
                         <span>Send Message</span>
+                        <Send className="w-5 h-5" />
                       </>
                     )}
                   </Button>
@@ -289,16 +285,12 @@ const FormData = () => {
                   <a href="/terms" className="text-yellow-600 hover:underline">
                     Terms of Service
                   </a>
-                  .
+              
                 </motion.p>
               </form>
             </Form>
           </motion.div>
-
-      
-        </div>
-      </div>
-    </section>
+</>
   )
 }
 

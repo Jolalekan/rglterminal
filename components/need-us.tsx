@@ -161,7 +161,7 @@ const NeedUs = () => {
             className="relative h-[400px] lg:h-[700px] rounded-2xl overflow-hidden shadow-2xl group"
           >
             <Image
-              src="/img9.jpg"
+              src="/trucks2.jpeg"
               alt="need us image"
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-700"

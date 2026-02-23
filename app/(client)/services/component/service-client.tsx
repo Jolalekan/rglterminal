@@ -103,8 +103,22 @@ const ServicesClient = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="h-screen relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-32">
-        <div className="absolute inset-0 bg-[url('/img9.jpg')] opacity-5" />
+      <section className="h-[60vh] min-h-[500px] relative  text-white py-32">
+        {/* <div className="absolute inset-0 bg-[url('/img9.jpg')] opacity-5" /> */}
+
+       <Image
+              src="/img9.jpg"  
+              alt="Hero background"
+              fill
+              className="object-cover"
+              priority
+            />
+
+               {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/50" />
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white" /> */}
+
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -174,7 +188,6 @@ const ServicesClient = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
 
       <ChooseUs/>
 

@@ -2,12 +2,9 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Briefcase, Users, TrendingUp, Award, MapPin, Clock, DollarSign, Heart } from "lucide-react"
 
 const CareerClient = () => {
   
-
-
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -19,22 +16,13 @@ const CareerClient = () => {
     }
   }
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  }
-
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
+      <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <Image
-          src="/img7.jpg"
-          alt="Maritime Shipping"
+          src="/trucks1.jpeg"
+          alt="career page image"
           fill
           className="object-cover"
           priority
@@ -60,13 +48,7 @@ const CareerClient = () => {
                 and reliable transport of goods across international waters. Join our team of 
                 experts and build a rewarding career in logistics.
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-700 transition shadow-lg hover:shadow-xl"
-              >
-                View Open Positions
-              </motion.button>
+              
             </motion.div>
           </div>
         </div>

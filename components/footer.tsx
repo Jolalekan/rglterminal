@@ -164,8 +164,8 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/bonded-terminal" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
-                    Bonded Terminal
+                  <Link href="/land-shipping" className="hover:text-yellow-500 transition hover:translate-x-1 inline-block">
+                   Land Shipping
                   </Link>
                 </li>
                 <li>

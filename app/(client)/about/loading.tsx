@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <LoadingState 
       title="Loading about page..." 
-      description="Please wait while we fetch your about page." 
+      description="Please wait while we fetch information." 
     />
   );
 }

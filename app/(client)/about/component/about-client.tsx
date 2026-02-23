@@ -59,8 +59,18 @@ const AboutClient = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="h-screen relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-32">
-        <div className="absolute inset-0 bg-[url('/img10.jpg')] opacity-5" />
+      <section className="h-[60vh] min-h-[500px] text-white relative  py-32">
+       
+              <Image
+                     src="/home2.jpeg"  
+                     alt="Hero background"
+                     fill
+                     className="object-cover"
+                     priority
+                   />
+       
+                      {/* Dark Overlay */}
+                       <div className="absolute inset-0 bg-black/50" />
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

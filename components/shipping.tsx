@@ -5,7 +5,7 @@ const Shipping = () => {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/ship1.jpg" 
+        src="/trucks1.jpeg" 
         alt="container background"
         fill
         className="object-cover"

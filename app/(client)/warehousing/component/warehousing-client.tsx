@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {  CirclePlus } from 'lucide-react'
-import { Metadata } from 'next'
 import { useQuote } from '@/app/provider/quote-provider';
 
 const WarehousingClient = () => {
@@ -36,11 +35,11 @@ const { openQuote } = useQuote();
       transition: { duration: 0.5 }
     }
   }
-
+ 
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="h-screen relative min-h-[500px] overflow-hidden">
+      <section className="h-[60vh] min-h-[500px] relative overflow-hidden">
         <Image
           src="/img1.jpg"
           alt="Bonded Warehousing"
