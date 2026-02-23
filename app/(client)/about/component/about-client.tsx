@@ -57,7 +57,7 @@ const AboutClient = () => {
   }
 
   return (
-    <div>
+    <div> 
       {/* Hero Section */}
       <section className="h-[60vh] min-h-[500px] text-white relative  py-32">
        
