@@ -37,9 +37,9 @@ const CareerClient = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
+              {/* <span className="inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
                 Join Our Team
-              </span>
+              </span> */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Your Gateway to a <span className="text-yellow-400">Shipping Career</span> in Nigeria
               </h1>

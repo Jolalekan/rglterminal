@@ -202,6 +202,17 @@ const Navbar = () => {
               </li>
               <li>
                 <Link 
+                  href="/services" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`text-center  block font-medium transition ${
+                    isScrolled ? 'text-gray-700 hover:text-gray-900 hover:bg-gray-600' : 'text-white hover:text-gray-200'
+                  }`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link 
                   href="/contact" 
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`text-center block font-medium transition ${
