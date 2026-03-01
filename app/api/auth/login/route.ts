@@ -57,13 +57,13 @@ const response = NextResponse.json(
   { status: 200 }
 );
 
-// set the auth cookie on the response
+
 response.cookies.set({
   name: "auth-token",
   value: accessToken,
   httpOnly: true,
   path: "/",
-  maxAge: 7 * 24 * 60 * 60, // 7 days
+  maxAge: 7 * 24 * 60 * 60
 });
 
 return response;

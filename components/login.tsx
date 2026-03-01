@@ -56,7 +56,6 @@ export const Login = () => {
  
     const res =  await axios.post("api/auth/login", values);
 
-    console.log("res", res)
     if(res.status === 200){
       console.log("login sucessful", res.data);
       router.push("/quote-request")
@@ -69,7 +68,7 @@ export const Login = () => {
   }
 }
 
-
+ 
   return (
     <Form {...form}>
       <form

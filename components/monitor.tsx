@@ -11,7 +11,7 @@ const Monitor = () => {
     {
       icon: Package,
       title: 'Real-Time Tracking',
-      description: 'Track every shipment in real-time',
+      description: 'Click to track shipment in real-time',
       href: "/tracking"
 
     },
@@ -24,6 +24,7 @@ const Monitor = () => {
       icon: MapPin,
       title: 'Global Coverage',
       description: 'Worldwide shipping network'
+
     },
     {
       icon: Shield,

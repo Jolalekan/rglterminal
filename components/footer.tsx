@@ -19,7 +19,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
 
   const socialMedia: SocialMedia = {
-    facebook: "rollinggrazingltd",
+    facebook: "rollinggrazinglimited",
     instagram: "rollinggrazingltd",
     twitter: "rollinggrazingltd",
     tiktok: "@rollinggrazingltd",

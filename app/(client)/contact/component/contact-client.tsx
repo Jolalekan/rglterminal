@@ -1,5 +1,6 @@
 "use client"
-import FormData from '@/components/form'
+
+import FormData from '@/components/form-data'
 import { motion } from 'framer-motion'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { Metadata } from 'next'
@@ -39,7 +40,7 @@ const LocationMap = dynamic(() => import('@/components/location-map'), {
 const ContactClient = () => {
  
   return (
-    <div className="bg-white">
+    <div className="bg-white ">
       {/* Hero Section */}
       <section className="h-[70vh] min-h-[500px] relative  text-white py-32">
         <Image
@@ -50,8 +51,6 @@ const ContactClient = () => {
                  priority
                />
  <div className="absolute inset-0 bg-black/50" />
-               
-     
         <div className="container mx-auto px-4 relative z-5">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -72,36 +71,35 @@ const ContactClient = () => {
         </div>
       </section>
 
-   
+<section className="py-8 mx-auto max-w-7xl px-4 sm:px-4 md:px-4 lg:px-0">
+  <div className="flex flex-col md:flex-row gap-6">
 
-<section className="py-20 bg-white">
-  <div className="container flex gap-6">
-  
-    {/* Contact Form - 2/3 width */}
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
+    
+    <motion.div 
+    initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-        className="w-2/3 min-w-0 rounded-xl overflow-hidden shadow-2xl"
-    >
+    
+    className="flex-1 overflow-hidden ">
       <FormData />
     </motion.div>
+ 
 
-    {/* Quick Contact Info - 1/3 width */}
+    <div className="w-[30%]">
     <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="w-1/3 min-w-0 space-y-6"
+      className=" space-y-6  bg-yellow-200"
     >
-      <div>
+    
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us Here</h2>
         <p className="text-gray-600 mb-6">
           Visit our office or reach out through any of the channels below. We&apos;re here to help!
         </p>
-      </div>
+     
 
       <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-xl p-6 space-y-4">
         <div className="flex items-start space-x-3">
@@ -164,6 +162,7 @@ const ContactClient = () => {
       </div>
     </motion.div>
 
+  </div>
   </div>
 </section>
   

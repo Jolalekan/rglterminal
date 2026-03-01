@@ -1,123 +1,124 @@
 "use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { motion, animate } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
-import ChooseUs from '@/components/choose-us'
+import Image from "next/image";
+import Link from "next/link";
+import { motion, animate } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
+import ChooseUs from "@/components/choose-us";
 
 const ServicesClient = () => {
-  const Services = [
+  const services = [
     {
       image: "/img1.jpg",
       href: "/warehousing",
       title: "Bonded Warehousing",
-      description: "Secure and efficient storage solutions for your imported goods with full customs compliance.",
-  
-      color: "yellow"
+      description:
+        "Secure and efficient storage solutions for your imported goods with full customs compliance.",
+
+      color: "yellow",
     },
     {
       image: "/container1.jpg",
       href: "/storage",
       title: "Container Storage",
-      description: "Flexible container storage options tailored to your needs with 24/7 security monitoring.",
+      description:
+        "Flexible container storage options tailored to your needs with 24/7 security monitoring.",
 
-      color: "blue"
+      color: "blue",
     },
     {
       image: "/ship.jpg",
       href: "/maritime-shipping",
       title: "Shipping",
-      description: "Efficient water transport solutions connecting major ports and inland waterways.",
+      description:
+        "Efficient water transport solutions connecting major ports and inland waterways.",
 
-      color: "green"
+      color: "green",
     },
     {
       image: "/trucks.jpeg",
       href: "/land-shipping",
       title: "Land Shipping",
-      description: "Specialized handling for bulk commodities within Nigeria and across Africa countries.",
+      description:
+        "Specialized handling for bulk commodities within Nigeria and across Africa countries.",
 
-      color: "purple"
+      color: "purple",
     },
-  ]
+  ];
 
   const stats = [
     { number: 15, suffix: "+", label: "Years Experience" },
     { number: 10500, suffix: "+", label: "Happy Clients" },
     { number: 100, suffix: "+", label: "Dedicated Staff" },
-    { number: 100, suffix: "+", label: "Fleet Trucks" }
-  ]
+    { number: 100, suffix: "+", label: "Fleet Trucks" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
-  }
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
-  }
+      transition: { duration: 0.5 },
+    },
+  };
 
   const getColorClasses = (color: string) => {
-    const colors: Record<string, { bg: string, text: string, hover: string, badge: string }> = {
+    const colors: Record<
+      string,
+      { bg: string; text: string; hover: string; badge: string }
+    > = {
       yellow: {
         bg: "bg-yellow-100",
         text: "text-yellow-600",
         hover: "group-hover:bg-yellow-600",
-        badge: "bg-yellow-600"
+        badge: "bg-yellow-600",
       },
       blue: {
         bg: "bg-blue-100",
         text: "text-blue-600",
         hover: "group-hover:bg-blue-600",
-        badge: "bg-blue-600"
+        badge: "bg-blue-600",
       },
       green: {
         bg: "bg-green-100",
         text: "text-green-600",
         hover: "group-hover:bg-green-600",
-        badge: "bg-green-600"
+        badge: "bg-green-600",
       },
       purple: {
         bg: "bg-purple-100",
         text: "text-purple-600",
         hover: "group-hover:bg-purple-600",
-        badge: "bg-purple-600"
-      }
-    }
-    return colors[color] || colors.yellow
-  }
+        badge: "bg-purple-600",
+      },
+    };
+    return colors[color] || colors.yellow;
+  };
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
       <section className="h-[60vh] min-h-[500px] relative  text-white py-32">
-        {/* <div className="absolute inset-0 bg-[url('/img9.jpg')] opacity-5" /> */}
+        <Image
+          src="/img9.jpg"
+          alt="Hero background"
+          fill
+          className="object-cover"
+          priority
+        />
 
-       <Image
-              src="/img9.jpg"  
-              alt="Hero background"
-              fill
-              className="object-cover"
-              priority
-            />
-
-               {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/50" />
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white" /> */}
-
+        <div className="absolute inset-0 bg-black/50" />
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -125,7 +126,6 @@ const ServicesClient = () => {
             animate={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ type: "spring", stiffness: 80, damping: 15 }}
-            // transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
             <span className="mt-4 inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
@@ -135,9 +135,10 @@ const ServicesClient = () => {
               Our <span className="text-yellow-400">Services</span>
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed">
-              The world of international trade is growing and we are here to help you clear 
-              and forward your freight. We are a logistics company that has the right connections, 
-              expertise, and resources to get your product to its destination on time.
+              The world of international trade is growing and we are here to
+              help you clear and forward your freight. We are a logistics
+              company that has the right connections, expertise, and resources
+              to get your product to its destination on time.
             </p>
           </motion.div>
         </div>
@@ -155,7 +156,7 @@ const ServicesClient = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto"
           >
             {stats.map((stat, index) => (
-              <CountUpStat 
+              <CountUpStat
                 key={index}
                 number={stat.number}
                 suffix={stat.suffix}
@@ -178,28 +179,76 @@ const ServicesClient = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              Comprehensive Logistics <span className="text-yellow-600">Solutions</span>
+              Comprehensive Logistics{" "}
+              <span className="text-yellow-600">Solutions</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              With over 15 years of experience, we offer fast turnaround times, competitive rates, 
-              and friendly customer service that will make the process of international trade easy for you.
+              With over 15 years of experience, we offer fast turnaround times,
+              competitive rates, and friendly customer service that will make
+              the process of international trade easy for you.
             </p>
           </motion.div>
         </div>
       </section>
 
-
-      <ChooseUs/>
-
+           
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ type: "spring", stiffness: 80, damping: 15 }}
+                >
+                <div className="container mx-auto px-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    {services.map((service, index) => {
+                      const colorClasses = getColorClasses(service.color);
+                      return (
+                        <Link
+                          key={index}
+                          href={service.href}
+                          className={`block p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${colorClasses}`}
+                        >
+                         <div className="h-52 w-full overflow-hidden rounded-md mb-4">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            width={100}
+                            height={100}
+                            className="object-cover mb-4 h-full w-full rounded-md"
+                            />
+                            </div>
+                          <h3 className={`text-xl font-bold text-center ${colorClasses.text}`}>{service.title}</h3>
+                          <p className="text-gray-600 text-center mt-2 mb-4">
+                            {service.description}
+                          </p>
+                        </Link>
+                      );
+                    })}
+                </div>
+                </div>
+              </motion.div>
+          
+      <ChooseUs />
     </div>
-  )
-}
+  );
+};
 
 // Count Up Component
-const CountUpStat = ({ number, suffix, label, delay }: { number: number, suffix: string, label: string, delay: number }) => {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+const CountUpStat = ({
+  number,
+  suffix,
+  label,
+  delay,
+}: {
+  number: number;
+  suffix: string;
+  label: string;
+  delay: number;
+}) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView) {
@@ -208,13 +257,13 @@ const CountUpStat = ({ number, suffix, label, delay }: { number: number, suffix:
         delay: delay,
         ease: "easeOut",
         onUpdate: (latest) => {
-          setCount(Math.floor(latest))
-        }
-      })
+          setCount(Math.floor(latest));
+        },
+      });
 
-      return controls.stop
+      return controls.stop;
     }
-  }, [isInView, number, delay])
+  }, [isInView, number, delay]);
 
   return (
     <motion.div
@@ -226,11 +275,12 @@ const CountUpStat = ({ number, suffix, label, delay }: { number: number, suffix:
       className="text-center"
     >
       <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-        {count.toLocaleString()}{suffix}
+        {count.toLocaleString()}
+        {suffix}
       </div>
       <div className="text-gray-600 font-medium">{label}</div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default ServicesClient
+export default ServicesClient;
