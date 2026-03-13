@@ -96,7 +96,7 @@ export default function RootLayout({
     url: "https://rglterminal.com",
     logo: "https://rglterminal.com/logo.png",
     image: "https://rglterminal.com/og-image.jpg",
-    telephone: "+234 7040004826",
+    telephone: "+234 704 000 4826",
     email: "info@rglterminal.com",
     address: {
       "@type": "PostalAddress",
@@ -120,7 +120,7 @@ export default function RootLayout({
   return (
     <html lang="en">
        <head>
-        <link rel="icon" href="logo1.png" />
+        <link rel="icon" href="logo.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

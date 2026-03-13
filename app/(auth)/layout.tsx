@@ -18,7 +18,7 @@ export default async function AuthLayout({ children }: AuthLayoutProps) {
     >
       <div>
         <Image
-          src="/logo.jpg"
+          src="/logo.png"
           alt="logo"
           width={100}
           height={100}

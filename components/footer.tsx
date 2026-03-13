@@ -69,7 +69,7 @@ const Footer = () => {
             <motion.div variants={itemVariants} className="space-y-4">
               <Link href="/" className='flex items-center gap-2'>
                           <Image
-                            src="/logo1.png"
+                            src="/logo.png"
                             alt='logo'
                             height={60}
                             width={60}
