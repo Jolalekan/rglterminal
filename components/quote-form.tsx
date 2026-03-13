@@ -50,7 +50,7 @@ interface QuoteFormProps {
 
 const QuoteForm = ({ open, onOpenChange }: QuoteFormProps) => {
   const router = useRouter();
-  const [loading, SetLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof quoteSchema>>({
     resolver: zodResolver(quoteSchema),
@@ -66,16 +66,19 @@ const QuoteForm = ({ open, onOpenChange }: QuoteFormProps) => {
 
   async function onSubmit(values: z.infer<typeof quoteSchema>) {
     try {
-      SetLoading(true);
+      setLoading(true);
       const response = await axios.post("/api/quote-request", values);
 
+      if (response.status === 201) {
       toast.success("Quote request submitted! We'll get back to you shortly.");
       router.push("/thanks");
       onOpenChange(false);
-      if (response.status === 200) {
+      form.reset();
       }
     } catch (error: any) {
       toast.error("Something went wrong. Please try again.", error);
+    }finally{
+      setLoading(false)
     }
   }
 
@@ -262,8 +265,8 @@ const QuoteForm = ({ open, onOpenChange }: QuoteFormProps) => {
                             </>
                           ) : (
                             <>
-                              <Send className="mr-2 h-4 w-4" />
                               Submit
+                              <Send className="ml-2 h-4 w-4" />
                             </>
                           )}
                         </Button>

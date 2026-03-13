@@ -31,7 +31,7 @@ const EmailReplyModal: React.FC<EmailReplyModalProps> = ({
     setIsSending(true);
     setError('');
 
-      try {
+      try { 
     // Use axios properly OR use fetch - don't mix them
     const response = await axios.post('/api/send-email', {
       to: recipientEmail,

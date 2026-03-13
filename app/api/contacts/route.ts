@@ -1,56 +1,40 @@
 import prismadb from "@/lib/prismadb";
 import { NextResponse } from "next/server";
-import { generateSlug } from "@/lib/slug";
+import { transporter } from "@/lib/nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const data = await req.json();
-    console.log("data received", data)
-    const { firstName, surname, email, phone, message } = data;
+    const { firstName, surname, email, phone, message } = await req.json();
 
     if (!email || !message) {
       return NextResponse.json(
-        { error: "Email and message body are required" },
+        { error: "Email and message are required" },
         { status: 400 }
       );
     }
 
-    let conversation = await prismadb.conversation.findFirst({
-      where: {
-        contacts: {
-          some: { email: email },
-        },
-      },
+    // Save to database for your records
+    const contact = await prismadb.contact.create({
+      data: { firstName, surname, email, phone, message },
     });
 
-    if (!conversation) {
-      const slug = generateSlug(firstName, email, "contact");
-      conversation = await prismadb.conversation.create({
-        data: { 
-          slug, 
-          email, 
-          name:firstName,
-        },
-      });
-    }
-    // Step 3 — Save the message into conversation
-    const contact = await prismadb.contact.create({
-      data: {
-        firstName,
-        surname,
-        email,
-        phone,
-        message,
-        conversationId: conversation.id,
-      },
+    // Notify yourself via Zoho Mail
+    await transporter.sendMail({
+      from: process.env.ZOHO_EMAIL,
+      to: process.env.ZOHO_EMAIL,
+      replyTo: email,
+      subject: `New Contact Message from ${firstName} ${surname}`,
+      html: `
+        <h2>New Contact Message</h2>
+        <p><strong>Name:</strong> ${firstName} ${surname}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     });
 
     return NextResponse.json(
-      {
-        success: true,
-        message: "Message sent successfully",
-        data: contact,
-      },
+      { success: true, message: "Message sent successfully", data: contact },
       { status: 201 }
     );
   } catch (error) {

@@ -128,9 +128,9 @@ const ServicesClient = () => {
             transition={{ type: "spring", stiffness: 80, damping: 15 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <span className="mt-4 inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
+            {/* <span className="mt-4 inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
               What We Do
-            </span>
+            </span> */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Our <span className="text-yellow-400">Services</span>
             </h1>

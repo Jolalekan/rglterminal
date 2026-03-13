@@ -2,7 +2,6 @@
 
 import AllContacts from "@/components/all-contacts";
 import DisplayContactMessages from "@/components/display-contact";
-
 import { Input } from "@/components/ui/input";
 import { ContactWithConversation} from "@/type";
 import { MessageSquare } from "lucide-react";

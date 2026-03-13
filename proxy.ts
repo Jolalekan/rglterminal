@@ -7,7 +7,7 @@ export function proxy(req: NextRequest) {
   const {pathname} = req.nextUrl;
 
   const protectedRoutes =[
-    "/dashboard",
+    "/quote-request",
     "/admin"
   ];
 
@@ -25,9 +25,9 @@ export function proxy(req: NextRequest) {
     try {
       jwt.verify(token, process.env.JWT_SECRET!);
       
-      // If logged in and trying to access login/register, redirect to dashboard
+      // If logged in and trying to access login/register, redirect to quote-request
       if (isAuthRoute) {
-        return NextResponse.redirect(new URL("/dashboard", req.url));
+        return NextResponse.redirect(new URL("/quote-request", req.url));
       }
       
       // Allow access to protected routes
@@ -51,7 +51,7 @@ export function proxy(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/dashboard/:path*",
+    "/quote-request/:path*",
     "/admin/:path*",
     "/account/:path*",
     "/login",

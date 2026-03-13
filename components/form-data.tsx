@@ -50,7 +50,7 @@ const formSchema = z.object({
 const FormData = () => {
   const router = useRouter();
 
-  const [loading, SetLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,17 +65,19 @@ const FormData = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      SetLoading(true);
+      setLoading(true);
       const response = await axios.post("/api/contacts", values);
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         toast.success("Message sent successfully!.");
         router.push("/thanks");
+        form.reset();
       }
 
-      form.reset();
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
+    }finally{
+      setLoading(false)
     }
   }
 
@@ -262,8 +264,8 @@ const FormData = () => {
                 </>
               ) : (
                 <>
-                  <Send className="mr-2 h-4 w-4" />
                   Submit
+                  <Send className="ml-2 h-4 w-4" />
                 </>
               )}
             </Button>
