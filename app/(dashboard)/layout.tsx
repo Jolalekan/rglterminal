@@ -11,7 +11,6 @@ export default async function DashboardLayout({
 }) {
   const { admin: tokenPayload } = await verifyToken();
 
-  // Extract the userId from the decoded token
   const admin = tokenPayload?.id;
 
   if (!admin) {
@@ -21,7 +20,7 @@ export default async function DashboardLayout({
   return (
 
 <div className=" overflow-hidden bg-gray-100">
-      {/* Sidebar */}
+ 
       <aside
         className="
           fixed top-0 left-0
