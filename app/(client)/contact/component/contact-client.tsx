@@ -73,7 +73,6 @@ const ContactClient = () => {
 
 <section className="py-8 mx-auto max-w-7xl px-4 sm:px-4 md:px-4 lg:px-0">
   <div className="flex flex-col md:flex-row gap-6">
-
     
     <motion.div 
     initial={{ opacity: 0, x: -50 }}
@@ -86,13 +85,13 @@ const ContactClient = () => {
     </motion.div>
  
 
-    <div className="w-[30%]">
+    <div className="w-full lg:w-[30%]">
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className=" space-y-6  bg-yellow-200"
+      className=" space-y-6"
     >
     
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Find Us Here</h2>
