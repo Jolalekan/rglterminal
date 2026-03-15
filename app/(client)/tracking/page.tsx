@@ -58,6 +58,7 @@ export default function TrackPage() {
 
       <div className="min-h-screen mx-auto max-w-7xl">
         <div className="px-4 py-8 flex justify-between gap-12 h-full">
+          <div className="w-full">
           <div className="flex flex-col gap-4 w-full">
             <h1 className="text-3xl font-bold text-center mb-2">
               Track Your Package
@@ -116,14 +117,13 @@ export default function TrackPage() {
               </li>
             </ol>
           </div>
-
-          <div className="relative overflow-hidden w-full h-full hidden md:block">
+          </div>
+              
+          <div className="w-full relative overflow-hidden hidden md:block">
             <Image
               src="/truck.jpeg"
               alt="Package delivery"
-              // fill
-              width={100}
-              height={100}
+              fill
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-yellow-900/20" />
