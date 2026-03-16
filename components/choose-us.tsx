@@ -27,7 +27,7 @@ const ChooseUs = () => {
       title: "Secure",
       description: "Your goods are fully insured and handled with the highest security standards throughout the journey.",
       icon: "/settings.png",
-      bgImage: "/img3.jpg"
+      bgImage: "/logo.png"
     },
     {
       title: "Efficient",

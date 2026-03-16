@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Rolling Grazing Bonded Terminal - Logistics Solutions",
     description: "Leading bonded terminal and logistics company in Nigeria",
-    images: ["/twitter-image.jpg"], // Create this image (1200x600px)
-    creator: "@rollinggrazingltd" // Replace with actual Twitter handle
+    images: ["/twitter-image.png"], 
+    creator: "@rollinggrazingltd" 
   },
   robots: {
     index: true,
@@ -95,7 +95,7 @@ export default function RootLayout({
     description: "Leading bonded terminal and logistics company in Nigeria",
     url: "https://rglterminal.com",
     logo: "https://rglterminal.com/logo.png",
-    image: "https://rglterminal.com/og-image.jpg",
+    image: "https://rglterminal.com/og-image.png",
     telephone: "+234 704 000 4826",
     email: "info@rglterminal.com",
     address: {
@@ -103,10 +103,10 @@ export default function RootLayout({
       streetAddress: "Kilometer 26, Opposite Foreign Affairs Academy,",
       addressLocality: "Ijanikin Badagry Expressway",
       addressRegion: "Lagos State, Nigeria",
-      addressCountry: "NG",
+      addressCountry: "NG", 
     },
     sameAs: [
-      "https://facebook.com/rollinggrazingltd",
+      "https://facebook.com/rollinggrazinglimited",
       "https://twitter.com/rollinggrazingltd",
       "https://instagram.com/rollinggrazingltd",
     ],

@@ -27,7 +27,7 @@ const AboutClient = () => {
       icon: Lightbulb,
       title: "Innovation",
       description: "We embrace new technologies and creative solutions to improve our logistics services.",
-      bgImage: "/img3.jpg"
+      bgImage: "/logo.png"
     },
     {
       icon: Users,
@@ -78,9 +78,7 @@ const AboutClient = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            {/* <span className="inline-block bg-yellow-600/20 text-yellow-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 mb-6">
-              About Us
-            </span> */}
+         
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Where Precision Logistics Meets{' '}
               <span className="text-yellow-400">Seamless Operations</span>
