@@ -119,7 +119,7 @@ export default function TrackPage() {
           </div>
           </div>
               
-          <div className="w-full relative overflow-hidden hidden md:block">
+          <div className="w-full relative overflow-hidden hidden md:block shadow-lg rounded-lg">
             <Image
               src="/truck.jpeg"
               alt="Package delivery"
