@@ -62,8 +62,8 @@ const AboutClient = () => {
       <section className="h-[60vh] min-h-[500px] text-white relative  py-32">
        
               <Image
-                     src="/home2.jpeg"  
-                     alt="Hero background"
+                     src="/about_hero.jpeg"  
+                     alt="About hero"
                      fill
                      className="object-cover"
                      priority
