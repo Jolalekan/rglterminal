@@ -209,14 +209,17 @@ const ServicesClient = () => {
                           href={service.href}
                           className={`block p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ${colorClasses}`}
                         >
-                         <div className="h-52 w-full overflow-hidden rounded-md mb-4">
+                         <div className="overflow-hidden rounded-md mb-4">
+                          <div className="w-full h-48 relative">
                           <Image
                             src={service.image}
                             alt={service.title}
-                            width={100}
-                            height={100}
+                            fill
+                            // width={100}
+                            // height={100}
                             className="object-cover mb-4 h-full w-full rounded-md"
                             />
+                            </div>
                             </div>
                           <h3 className={`text-xl font-bold text-center ${colorClasses.text}`}>{service.title}</h3>
                           <p className="text-gray-600 text-center mt-2 mb-4">
