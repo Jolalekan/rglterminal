@@ -100,9 +100,7 @@ const MaritimeShippingClient = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="inline-block bg-blue-400/20 text-blue-300 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-blue-400/30 mb-6">
-                Maritime Services
-              </span>
+            
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Your Gateway to <span className="text-blue-300">Shipping</span> in Nigeria
               </h1>
