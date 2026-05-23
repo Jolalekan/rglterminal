@@ -57,9 +57,7 @@ const StorageClient = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <span className="inline-block bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm border border-blue-400/30 mb-6">
-                Storage Solutions
-              </span>
+         
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Container <span className="text-blue-400">Storage</span>
               </h1>
