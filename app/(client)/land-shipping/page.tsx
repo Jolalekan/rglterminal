@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import LandShippingClient from "./land-shipping-client";
+import LandShippingClient from "./component/land-shipping-client";
 
 export const metadata: Metadata = {
   title: "Land Shipping - Efficient Cargo Handling in Nigeria",
