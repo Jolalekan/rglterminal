@@ -22,7 +22,6 @@ export async function PATCH(
       label
     } = body;
 
-    // Get the existing shipment
     const existingShipment = await prismadb.shipment.findUnique({
       where: { id },
     });
@@ -31,7 +30,6 @@ export async function PATCH(
       return new NextResponse("Not found", { status: 404 });
     }
 
-    // Update the address
     await prismadb.address.update({
       where: { id: existingShipment.receiverAddressId },
       data: {
@@ -44,7 +42,6 @@ export async function PATCH(
       },
     });
 
-    // Update the shipment
     const shipment = await prismadb.shipment.update({
       where: { id },
       data: {
