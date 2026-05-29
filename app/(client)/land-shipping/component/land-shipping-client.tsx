@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { motion } from 'framer-motion'
-import {  CirclePlus } from 'lucide-react'
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowRight, CirclePlus, Mail } from "lucide-react";
+import { useQuote } from "@/app/provider/quote-provider";
 
 const LandShippingClient = () => {
-  
-
+  const { openQuote } = useQuote();
   const benefits = [
     "Reduced customs duty burden through deferred payments",
     "Secure storage under customs supervision",
@@ -15,50 +15,50 @@ const LandShippingClient = () => {
     "Modern handling equipment and trained personnel",
     "Insurance coverage for stored goods",
     "24/7 access and operations",
-    "Competitive storage rates"
-  ]
+    "Competitive storage rates",
+  ];
 
   const processes = [
     {
       step: "1",
       title: "Arrival & Documentation",
-      description: "Goods arrive and are registered with customs authorities"
+      description: "Goods arrive and are registered with customs authorities",
     },
     {
       step: "2",
       title: "Inspection & Storage",
-      description: "Cargo inspection and secure storage in designated areas"
+      description: "Cargo inspection and secure storage in designated areas",
     },
     {
       step: "3",
       title: "Inventory Management",
-      description: "Real-time tracking and inventory control systems"
+      description: "Real-time tracking and inventory control systems",
     },
     {
       step: "4",
       title: "Release & Clearance",
-      description: "Customs clearance and timely release of goods"
-    }
-  ]
+      description: "Customs clearance and timely release of goods",
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
-  }
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
-  }
+      transition: { duration: 0.5 },
+    },
+  };
 
   return (
     <div className="bg-white">
@@ -72,7 +72,7 @@ const LandShippingClient = () => {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 via-purple-900/70 to-purple-900/50" />
-        
+
         <div className="relative z-10 h-full flex items-center">
           <div className="container mx-auto px-4">
             <motion.div
@@ -81,31 +81,16 @@ const LandShippingClient = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-             
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Bonded Container <span className="text-purple-300">Terminal</span> Operation
+                Bonded Container{" "}
+                <span className="text-purple-300">Terminal</span> Operation
               </h1>
               <p className="text-xl text-gray-200 leading-relaxed mb-8">
-                RGL Terminal provides bonded container terminal operations with secure storage 
-                and handling of goods under customs supervision, ensuring compliance and 
-                efficiency in every step of your supply chain.
+                RGL Terminal provides bonded container terminal operations with
+                secure storage and handling of goods under customs supervision,
+                ensuring compliance and efficiency in every step of your supply
+                chain.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="cursor-pointer bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl"
-                >
-                  Get Started
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="cursor-pointer bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/20 transition border border-white/30"
-                >
-                  Learn More
-                </motion.button>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -146,14 +131,24 @@ const LandShippingClient = () => {
                   <div className="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center mb-4 text-white font-bold text-2xl">
                     {process.step}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{process.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {process.title}
+                  </h3>
                   <p className="text-gray-600">{process.description}</p>
                 </div>
                 {/* Arrow connector (hidden on last item and mobile) */}
                 {index < processes.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <svg className="w-8 h-8 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <svg
+                      className="w-8 h-8 text-purple-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
                 )}
@@ -182,18 +177,22 @@ const LandShippingClient = () => {
                 className="object-cover hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent" />
-              
+
               {/* Stats overlay */}
               <div className="absolute bottom-8 left-8 right-8">
                 <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-3xl font-bold text-white">100K+</div>
-                      <div className="text-sm text-purple-100">Containers Handled</div>
+                      <div className="text-sm text-purple-100">
+                        Containers Handled
+                      </div>
                     </div>
                     <div>
                       <div className="text-3xl font-bold text-white">99.9%</div>
-                      <div className="text-sm text-purple-100">Accuracy Rate</div>
+                      <div className="text-sm text-purple-100">
+                        Accuracy Rate
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -231,21 +230,55 @@ const LandShippingClient = () => {
               </div>
 
               <motion.button
+                onClick={openQuote}
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl mt-6"
+                 className="
+                      relative px-8 py-4 rounded-lg font-semibold
+                      overflow-hidden inline-flex items-center gap-3
+                      bg-purple-600 text-white
+                      shadow-lg hover:shadow-xl
+                      cursor-pointer
+                    "
               >
-                Request Terminal Access
+                       <motion.span
+                                      aria-hidden
+                                      className="absolute inset-0 bg-purple-700"
+                                      variants={{
+                                        initial: { x: '-100%' },
+                                        hover: { x: 0 }
+                                      }}
+                                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                                    />
+                              
+                                    {/* Icon */}
+                                    <Mail size={20} className="relative z-10" />
+                              
+                                    {/* Text */}
+                                    <span className="relative z-10 whitespace-nowrap">
+                                      Request Terminal Access
+                                    </span>
+                              
+                                    {/* Arrow appears on hover */}
+                                    <motion.span
+                                      className="relative z-10 flex items-center"
+                                      variants={{
+                                        initial: { opacity: 0, x: -8 },
+                                        hover: { opacity: 1, x: 0 }
+                                      }}
+                                      transition={{ duration: 0.25, ease: 'easeOut' }}
+                                    >
+                                      <ArrowRight className="w-5 h-5" />
+                                    </motion.span>
+               
               </motion.button>
             </motion.div>
           </div>
         </div>
       </section>
-
-
     </div>
-  )
-}
+  );
+};
 
-export default LandShippingClient
+export default LandShippingClient;

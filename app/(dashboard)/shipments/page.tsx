@@ -1,6 +1,7 @@
 import prismadb from "@/lib/prismadb"
 import { ShipmentColumn } from "./component/colum"
 import ShipmentClient from "./component/client"
+import { format } from "date-fns";
 
 export default async function ShipmentPage() {
   
@@ -17,8 +18,12 @@ export default async function ShipmentPage() {
     trackingNumber: shipment.trackingNumber,
     currentLocation: shipment.currentLocation || "Not Available",
     destination: shipment.destination,
-    createdAt: shipment.createdAt.toISOString(),
-  }))
+    createdAt: format(new Date(shipment.createdAt), "MMM dd, yyyy"),        
+  estimatedDelivery: shipment.estimatedDelivery 
+    ? format(new Date(shipment.estimatedDelivery), "MMM dd, yyyy")        
+    : "Not Set",
+}));
+
   return (
     <div className="p-8 pt-6">
       <ShipmentClient

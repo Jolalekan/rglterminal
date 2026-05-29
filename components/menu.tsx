@@ -5,17 +5,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation";
 
 const menu =[
- 
-    {
-        icon: "/message.png",
-        label: "Quote Request",
-        href: "/quote-request",  
-    },
-    {
-        icon: "/contacts.png",
-        label: "Contacts",
-        href: "/contacts",  
-    },
     {
         icon: "/dashboard.png",
         label: "Shipments",

@@ -58,7 +58,7 @@ export const Login = () => {
 
     if(res.status === 200){
       console.log("login sucessful", res.data);
-      router.push("/quote-request")
+      router.push("/shipments")
     }
  
   } catch (err: any) {

@@ -9,6 +9,7 @@ export type ShipmentColumn={
     trackingNumber:string;
     destination:string;
     currentLocation:string;
+    estimatedDelivery:string;
     createdAt: string;
 }
 
@@ -28,6 +29,10 @@ export const column:ColumnDef<ShipmentColumn>[]=[
     {
         accessorKey:"currentLocation",
         header:"Current Location"
+    },
+    {
+        accessorKey:"estimatedDelivery",
+        header:"Delivery Date"
     },
     {
         accessorKey:"createdAt",

@@ -51,7 +51,9 @@ export async function PATCH(
         destination,
         destinationPhone,
         packageType,
-        estimatedDelivery,
+        estimatedDelivery: estimatedDelivery 
+      ? new Date(estimatedDelivery).toISOString()  
+      : null,
       },
     });
 
